@@ -1,0 +1,45 @@
+{% extends "base.twig.html" %}
+
+
+{% block main %}
+
+
+
+
+
+<h1>s'inscrire</h1>
+<form action="utilisateur/ajouter" method="post" class="newsletter">
+    <div>
+        <label for="uti_nom">Nom: </label>
+        <input type="text" name="uti_nom" id="nom" class="champ" required>
+    </div>
+    <div>
+        <label for="uti_courriel">Courriel: </label>
+        <input type="email" name="uti_courriel" class="champ" required>
+    </div>
+    <div>
+        <label for="uti_mdp">Mot de passe: </label>
+        <input type="password" name="uti_mdp" class="champ" required>
+    </div>
+    <div>
+        <label for="uti_age">Age: </label>
+        <input type="number" name="uti_age" class="champ" id="age" required>
+    </div>
+    <div>
+        <label for="uti_pays">Pays: </label>
+        <input type="text" name="uti_pays" class="champ" id="pays" required>
+    </div>
+    <div>
+        <button class="newsletter__form__submit" type="submit">Envoyer</button>
+    </div>
+    <div class="lien">
+        <a href="utilisateur/connect">Vous avez un compte? connectez-vous!</a>
+    </div>
+</form>
+
+
+
+
+
+
+{% endblock %}

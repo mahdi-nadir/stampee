@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <base href="{{ constant('BASE_SERVEUR') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="ressources/css/accueil/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fascinate&family=Kdam+Thmor+Pro&family=Montserrat:wght@600;700&family=Pacifico&family=Roboto:ital@1&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/918ba06b86.js" crossorigin="anonymous"></script>
+    <script src="ressources/js/main.js" defer></script>
+    <title>Stampee</title>
+</head>
+<body>
+    <nav class="menu">
+        <a href="accueil/index"><img src="ressources/css/accueil/img/logo.png" alt="LogoStampee" title="Page d'accueil" class="logo"></a>
+        <button class="menu__hamburger" id="hamburger">
+            <i class="fa-solid fa-bars" title="Menu Principal"></i>
+        </button>
+        <ul class="menu__list" id="menuUL">
+            <li><a href="#">Profil {% if session.utilisateur %}↓{% endif %}</a>
+                {% if session.utilisateur %}
+            <ul id="ulPro">
+                <li><a href="#">Mon profil</a></li>
+                <li><a href="#">Mes paramètres</a></li>
+                <li><a href="enchere/nouveau">Nouvelle enchère</a></li>
+            </ul>{% endif %}</li>
+            <li><a href="enchere/tout">Catalogue</a></li>
+            <li><a href="#">Actualités</a></li>
+            {% if session.utilisateur %}
+                <li><a href="utilisateur/deconnexion">déconnexion</a></li>
+            {% else %}
+                <li><a href="utilisateur/connect">Connexion</a></li>
+                <li><a href="utilisateur/nouveau">S'inscrire</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+
+
+    {% block main %}{% endblock %}
+
+
+    <footer class="footer">
+        <section class="footer__infos">
+            <div class="footer__logo">
+                <a href="accueil/index"><img src="ressources/css/accueil/img/logo.png" alt="LogoStampee" title="Page d'accueil" class="logoF"></a>
+            </div>
+        <div class="footer__infos__listOne">
+        <a href="#">Lord Stampee ?</a>
+        <a href="#">Infolettre</a>
+        <a href="#">A propos</a>
+        </div>
+        <div class="footer__follow">
+            <div class="footer__follow__text">
+                Suivez-nous
+            </div>
+            <div class="footer__follow__icones">
+                <i class="fa-brands fa-facebook-square" title="Facebook Page"></i>
+                <i class="fa-brands fa-twitter-square" title="Twitter Page"></i>
+                <i class="fa-brands fa-instagram-square" title="Instagram Profile"></i>
+                <i class="fa-brands fa-pinterest-square" title="Pinterest Account"></i>
+            </div>
+        </div>
+    </section>
+    <p class="footer__paraphe">
+        &copy; Mahdi NADIR - Tous droits réservés
+    </p>
+    </footer>
+</body>
+</html>
+    

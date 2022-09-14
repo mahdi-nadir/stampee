@@ -1,0 +1,156 @@
+{% extends "base.twig.html" %}
+
+{% block main %}
+
+<h1>Les plus consultés</h1>
+        <section class="tous">
+        <section class="consultes">
+            <article class="consultes__timbres1">
+                <div class="consultes__timbres__details">
+                    <p class="consultes__timbres__details__text">
+                        Timbre "Magenta"
+                    </p>
+                    <a href="#" class="consultes__timbres__details__a">
+                        Aller à la fiche
+                    </a>
+                </div>
+            </article>
+            <article class="consultes__timbres2">
+                <div class="consultes__timbres__details">
+                    <p class="consultes__timbres__details__text">
+                        Queen stamp
+                    </p>
+                    <a href="#" class="consultes__timbres__details__a">
+                        Aller à la fiche
+                    </a>
+                </div>
+            </article>
+        </section>
+        <a href="#" class="lien lien1">VOIR TOUT</a>
+    </section>
+
+
+        <h1>Catalogue des timbres</h1>
+        <div class="bar">
+            <button class="menu__hamburger" id="hamburger">
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="bar__filtre">
+                <span class="bar__filtre__text">filtre</span>
+            </div>
+            <div class="bar__recherche">
+                <input type="text" name="recherche" class="bar__recherche__champ" placeholder="Rechercher...">
+                <input type="submit" value="Trouver" class="bar__recherche__btn">
+            </div>
+            <div class="bar__icones">
+                <i class="fa-solid fa-grip"></i>
+                <i class="fa-solid fa-list"></i>
+            </div>
+        </div>
+        <hr>
+        <section class="catalogue">
+            <aside class="catalogue__aside">
+                <div class="catalogue__aside__trier__dateNomAudience">
+                    <h3 class="catalogue__aside__trier__dateNomAudience__titre">Trier</h3>
+                    <select class="catalogue__aside__trier__dateNomAudience__select" name="trier" id="trier">
+                        <option value="1">Par Nom</option>
+                        <option value="2">Par Date</option>
+                    </select>
+                </div>
+                <span class="localisation">Localisation</span>
+                <div class="catalogue__aside__localisation">
+                    <input type="checkbox" name="Manchester" id="Manchester">
+                    <label for="Manchester">Manchester</label><br><br>
+                    <input type="checkbox" name="Londres" id="Londres"> 
+                    <label for="Manchester">Londres</label><br><br>
+                    <input type="checkbox" name="Liverpool" id="Liverpool">
+                    <label for="Manchester">Liverpool</label><br><br>
+                    <input type="checkbox" name="Newcastle" id="Newcastle">
+                    <label for="Manchester">Newcastle</label><br><br>
+                    <input type="checkbox" name="Chelsea" id="Chelsea">
+                    <label for="Manchester">Chelsea</label><br><br>
+                    <input type="checkbox" name="WestHam" id="WestHam">
+                    <label for="Manchester">West Ham</label><br><br>
+                </div>
+                <div class="catalogue__aside__localisation__petit">
+                    <span class="localisation__petit">Localisation</span>
+                    <select class="catalogue__aside__localisation__petit__select">
+                        <option value="1">Manchester</option>
+                        <option value="2">Londres</option>
+                        <option value="3">Liverpool</option>
+                        <option value="4">Newcastle</option>
+                        <option value="5">Chelsea</option>
+                        <option value="6">West Ham</option>
+                    </select>
+                </div>
+                <span class="vente">Marché</span>
+                <div class="catalogue__aside__vente">
+                    <input type="radio" name="marche" id="dejaVendu">
+                    <label>Déjà Vendu</label><br><br>
+                    <input type="radio" name="marche" id="aVenir">
+                    <label>A venir</label>
+                </div>
+                <div class="vente__petit">
+                    <span class="vente__span__vente">Marché</span>
+                    <select class="vente__petit__select">
+                        <option value="1">Déjà Vendu</option>
+                        <option value="2">A venir</option>
+                    </select>
+                </div>
+                <input id="appliquer" type="submit" value="Appliquer">
+            </aside>
+
+            <section class="catalogue1__principal">
+                <article class="catalogue1__principal__timbre">
+                    <img class="catalogue1__principal__timbre__img" src="ressources/css/accueil/img/" alt="Queen Elizabeth" title="Reine Elizabeth">
+                    <h2 class="catalogue1__principal__timbre__titre">Queen Stamp</h2>
+                    <p class="catalogue1__principal__timbre__presentation">
+                        Lorem ipsum dolor sit amet consectetur
+                    </p>
+                    <a href="#" class="lienTimbre">voir la fiche</a>
+                </article>
+                <article class="catalogue1__principal__timbre">
+                    <img class="catalogue1__principal__timbre__img" src="ressources/css/accueil/img//stampCat2.jpg" alt="Oak Tree">
+                    <h2 class="catalogue1__principal__timbre__titre">Oak Tree</h2>
+                    <p class="catalogue1__principal__timbre__presentation">
+                        Lorem ipsum dolor sit amet consectetur
+                    </p>
+                    <a href="#" class="lienTimbre">voir la fiche</a>
+                </article>
+                <article class="catalogue1__principal__timbre">
+                    <img class="catalogue1__principal__timbre__img" src="ressources/css/accueil/img//stampCat3.jpg" alt="unknown">
+                    <h2 class="catalogue1__principal__timbre__titre">Timbre 3</h2>
+                    <p class="catalogue1__principal__timbre__presentation">
+                        Lorem ipsum dolor sit amet consectetur
+                    </p>
+                    <a href="#" class="lienTimbre">voir la fiche</a>
+                </article>
+                <article class="catalogue1__principal__timbre">
+                    <img class="catalogue1__principal__timbre__img" src="ressources/css/accueil/img//stampCat4.jpg" alt="Drapeau GB">
+                    <h2 class="catalogue1__principal__timbre__titre">Drapeau GB</h2>
+                    <p class="catalogue1__principal__timbre__presentation">
+                        Lorem ipsum dolor sit amet consectetur
+                    </p>
+                    <a href="#" class="lienTimbre">voir la fiche</a>
+                </article>
+                <article class="catalogue1__principal__timbre">
+                    <img class="catalogue1__principal__timbre__img" src="ressources/css/accueil/img//stampCat5.jpg" alt="King Edward">
+                    <h2 class="catalogue1__principal__timbre__titre">King Edward</h2>
+                    <p class="catalogue1__principal__timbre__presentation">
+                        Lorem ipsum dolor sit amet consectetur
+                    </p>
+                    <a href="#" class="lienTimbre">voir la fiche</a>
+                </article>
+                <article class="catalogue1__principal__timbre">
+                    <img class="catalogue1__principal__timbre__img" src="ressources/css/accueil/img//stampCat6.jpg" alt="Timbre Prairies">
+                    <h2 class="catalogue1__principal__timbre__titre">Les prairies</h2>
+                    <p class="catalogue1__principal__timbre__presentation">
+                        Lorem ipsum dolor sit amet consectetur
+                    </p>
+                    <a href="#" class="lienTimbre">voir la fiche</a>
+                </article>
+            </section>
+        </section>
+        <a href="#" class="liTbr">VOIR TOUT</a>
+        
+        {% endblock %}

@@ -1,0 +1,29 @@
+{% extends "base.twig.html" %}
+{% block main %}
+
+<h1>Ouvrir une connexion</h1>
+<section class="gestion-utilisateur">
+    <form class="newsletter" method="post" action="utilisateur/connexion">
+        <div class="champs">
+            <label for="uti_courriel">Courriel</label>
+            <input type="email" class="champ" name="uti_courriel" id="uti_courriel" placeholder="Adresse de courriel">
+        </div>
+        <div class="champs">
+            <label for="uti_mdp">Mot de passe</label>
+            <input type="password" class="champ" name="uti_mdp" id="uti_mdp" placeholder="Mot de passe">
+        </div>
+            <input class="newsletter__form__submit" type="submit" value="Connexion">
+        <div class="lien">
+            <a href="utilisateur/nouveau">Vous n'avez pas de compte? inscrivez-vous!</a>
+        </div>
+    </form>
+</section>
+
+{% if erreur %}
+    <div class="erreur">
+        <p>{{ erreur }}</p>
+    </div>
+{% endif %}
+
+
+{% endblock %}

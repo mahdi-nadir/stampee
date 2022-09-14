@@ -1,0 +1,26 @@
+{% extends "base.twig.html" %}
+
+{% block main %}
+<h1>Ajouter une enchère</h1>
+<form action="enchere/ajouter" method="post" class="newsletter">
+    <div>
+        <label for="enc_dateDebut">Date de début de l'enchère: </label>
+        <input type="date" name="enc_dateDebut" class="champ" required>
+    </div>
+    <div>
+        <label for="enc_dateFin">Date de fin de l'enchère: </label>
+        <input type="date" name="enc_dateFin" class="champ" required>
+    </div>
+    <div>
+        <label for="enc_prixDepart">Montant de départ: </label>
+        <input type="text" name="enc_prixDepart" class="champ" required>
+    </div>
+    <p>Cette enchère sera publiée par vous {{ session.utilisateur.uti_nom }}</p>
+    <div>
+        <button class="newsletter__form__submit" type="submit">Envoyer</button>
+    </div>
+    <div class="lien">
+        <a href="accueil/index">Aller à la page d'accueil</a>
+    </div>
+</form>
+        {% endblock %}

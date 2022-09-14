@@ -1,0 +1,101 @@
+{% extends "base.twig.html" %}
+
+{% block main %}
+
+
+<section class="infos">
+    <section class="carousel">
+        <figure class="carousel__imgs">
+            <img src="ressources/css/accueil/img/stamp2.jpg" alt="stamp2">
+            <img src="ressources/css/accueil/img/stamp3.jpg" alt="stamp3">
+            <img src="ressources/css/accueil/img/stamp5.jpg" alt="stamp5">
+            <img src="ressources/css/accueil/img/stamp4.jpg" alt="stamp4">
+            <img src="ressources/css/accueil/img/stamp2.jpg" alt="stamp2">
+        </figure>
+        </section>
+
+        <h1>LORD STAMPEE</h1>
+        <section class="presentation">
+        <p class="presentation__text__paragraphe">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla nostrum iste laborum vel quod adipisci blanditiis eius dignissimos saepe, ullam fugiat provident. Obcaecati, laudantium eveniet adipisicing elit. Nulla nostrum iste laborum vel quod adipisci blanditiis eius dignissimos... <a href="#">LIRE LA SUITE >></a>
+        </p>
+        <img src="ressources/css/accueil/img/stampee.jpg" alt="Lord Stampee" class="presentation__text__img">
+        </section>
+        
+        <h1>Enchères à venir</h1>
+        <section class="catalogue__principal">
+        <article class="catalogue__principal__timbre">
+            <div class="catalogue__principal__timbre__infos">
+            <span class="catalogue__principal__timbre__infos__titre">Parlement du Canada</span><br>
+            <span class="catalogue__principal__timbre__infos__date">29 août 2022</span><br>
+            <span class="catalogue__principal__timbre__infos__prix"><b>Prix estimé:</b> 3000 £</span><br>
+            <div class="catalogue__principal__timbre__infos__btns">
+                <a class="catalogue__principal__timbre__infos__btns__btn ">faire une mise</a>
+                <a class="catalogue__principal__timbre__infos__btns__btn ">Voir détails</a>
+            </div>
+            </div>
+            <div class="catalogue__principal__timbre__imgs">
+            <img class="catalogue__principal__timbre__img" src="ressources/css/accueil/img/parliament.jpg" alt="Parlement" title="Parlement du Canada">
+            <img class="catalogue__principal__timbre__img" src="ressources/css/accueil/img/parliament-back.jpg" alt="Parlement Verso" title="Parlement du Canada (back)">
+            </div>
+        </article>
+
+        <article class="catalogue__principal__timbre">
+            <div class="catalogue__principal__timbre__infos">
+            <span class="catalogue__principal__timbre__infos__titre">Queen Elizabeth</span><br>
+            <span class="catalogue__principal__timbre__infos__date">24 mars 2023</span><br>
+            <span class="catalogue__principal__timbre__infos__prix"><b>Prix estimé:</b> 4000 £</span><br>
+            <div class="catalogue__principal__timbre__infos__btns">
+                <a class="catalogue__principal__timbre__infos__btns__btn ">faire une mise</a>
+                <a class="catalogue__principal__timbre__infos__btns__btn ">Voir détails</a>
+            </div>
+            </div>
+            <div class="catalogue__principal__timbre__imgs">
+            <img class="catalogue__principal__timbre__img" src="ressources/css/accueil/img/stampCat1.jpg" alt="Queen Elizabeth" title="Reine Elizabeth">
+            <img class="catalogue__principal__timbre__img" src="ressources/css/accueil/img/s-300.jpg" alt="Queen Elizabeth Verso" title="Reine Elizabeth (back)">
+            </div>
+        </article>
+
+        <article class="catalogue__principal__timbre">
+            <div class="catalogue__principal__timbre__infos">
+            <span class="catalogue__principal__timbre__infos__titre">Polish Kitten</span><br>
+            <span class="catalogue__principal__timbre__infos__date">19 août 2022</span><br>
+            <span class="catalogue__principal__timbre__infos__prix"><b>Prix estimé:</b> 1500 £</span><br>
+            <div class="catalogue__principal__timbre__infos__btns">
+                <a class="catalogue__principal__timbre__infos__btns__btn ">faire une mise</a>
+                <a class="catalogue__principal__timbre__infos__btns__btn ">Voir détails</a>
+            </div>
+            </div>
+            <div class="catalogue__principal__timbre__imgs">
+            <img class="catalogue__principal__timbre__img" src="ressources/css/accueil/img/cat.jpg" alt="Polish Kitten" title="Polish Kitten">
+            <img class="catalogue__principal__timbre__img" src="ressources/css/accueil/img/catback.jpg" alt="Polish Kitten" title="Polish Kitten (back)">
+            </div>
+        </article>
+        </section>
+        <a href="#" class="liTbr">VOIR TOUT</a>
+
+
+        <h1>NEWSLETTER</h1>
+        <section class="newsletter">
+            <p class="newsletter__paragraphe">
+                Restez informés des meilleures histoires,<br>vidéos, événements et actualités<br>de Lord Stampee.
+            </p>
+            <form class="newsletter__form" action="#" method="post">
+                <span id="civil">Civilité</span><br>
+                <input type="radio" name="title" id="mr">
+                <label class="lab" for="mr">Mr</label>
+                <input type="radio" name="title" id="mme">
+                <label class="lab" for="mme">Mme</label>
+                <input type="radio" name="title" id="mlle">
+                <label class="lab" for="mlle">Mlle</label><br><br><br>
+
+                <input type="text" name="prenom" placeholder="Votre prénom" class="newsletter__form__prenom champ"><br><br>
+                <input type="text" name="nom" placeholder="Votre nom" class="newsletter__form__nom champ"><br><br>
+                <span id="etoile">*</span>
+                <input type="email" name="email" placeholder="Votre adresse email" class="newsletter__form__email champ"><br><br>
+                
+                <input type="submit" value="S'inscrire" class="newsletter__form__submit">
+            </form>
+        </section>
+    </section>
+    {% endblock %}
