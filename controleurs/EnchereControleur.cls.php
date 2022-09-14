@@ -9,9 +9,6 @@ class EnchereControleur extends Controleur
         } */
     }
 
-    /**
-     * Méthode invoquée par défaut si aucune action n'est indiquée
-     */
     public function index()
     {
         $this->gabarit->affecterActionParDefaut('tout');
@@ -30,13 +27,11 @@ class EnchereControleur extends Controleur
     }
 
     public function ajouter() {
-        // Ajouter la nouvelle catégorie (dont les valeurs sont reçues par POST) dans la BD
         $this->modele->ajouter($_POST, $_SESSION['utilisateur']->uti_id);
-        // Rediriger vers l'affichage des catégories
         Utilitaire::nouvelleRoute('enchere/tout');
     }
 
-    public function retirer() {
+    /* public function retirer() {
         $this->modele->retirer($_POST['enc_id']);
         Utilitaire::nouvelleRoute('enchere/tout');
     }
@@ -45,4 +40,9 @@ class EnchereControleur extends Controleur
         $this->modele->changer($_POST);
         Utilitaire::nouvelleRoute('enchere/tout');
     }
+
+    public function changerPrix() {
+        $this->modele->changer($_POST);
+        Utilitaire::nouvelleRoute('enchere/tout');
+    } */
 }

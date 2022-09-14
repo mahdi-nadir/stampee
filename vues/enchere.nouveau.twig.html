@@ -2,7 +2,7 @@
 
 {% block main %}
 <h1>Ajouter une enchère</h1>
-<form action="enchere/ajouter" method="post" class="newsletter">
+<form enctype="multipart/form-data" action="enchere/ajouter" method="post" class="newsletter">
     <div>
         <label for="enc_dateDebut">Date de début de l'enchère: </label>
         <input type="date" name="enc_dateDebut" class="champ" required>
@@ -12,15 +12,69 @@
         <input type="date" name="enc_dateFin" class="champ" required>
     </div>
     <div>
+        <label for="tim_nom">Nom du timbre: </label>
+        <input type="text" name="tim_nom" class="champ" required>
+    </div>
+    <label for="tim_couleur">Couleur du timbre: </label>
+    <select name="tim_couleur" class="champ">
+        <option value="bleu">Bleu</option>
+        <option value="rouge">Rouge</option>
+        <option value="vert">Vert</option>
+        <option value="jaune">Jaune</option>
+        <option value="violet">Violet</option>
+        <option value="orange">Orange</option>
+        <option value="rose">Rose</option>
+        <option value="noir">Noir</option>
+        <option value="blanc">Blanc</option>
+        <option value="marron">Marron</option>
+        <option value="gris">Gris</option>
+    </select>
+    <div>
+        <label for="tim_ville">Ville de création du timbre: </label>
+        <input type="text" name="tim_ville" class="champ" required>
+    </div>
+    <div>
+        <label for="tim_pays">Pays de création du timbre </label>
+        <input type="text" name="tim_pays" class="champ" required>
+    </div>
+    <div>
+        <label for="tim_dateCreation">Date de création du timbre </label>
+        <input type="date" name="tim_dateCreation" class="champ" required>
+    </div>
+    <div>
+        <label for="tim_dateCreation">Description du timbre: </label>
+        <textarea name="tim_description" class="champ" required>
+        </textarea>
+    </div>
+    <label for="tim_dimensions">Dimensions du timbre: </label>
+    <select name="tim_dimensions" class="champ">
+        <option value="2.5 x 3.5 cm">2.5 x 3.5 cm</option>
+        <option value="2.8 x 3.8 cm">2.8 x 3.8 cm</option>
+        <option value="3 x 4.2 cm">3 x 4.2 cm</option>
+    </select>
+    <div>
         <label for="enc_prixDepart">Montant de départ: </label>
         <input type="text" name="enc_prixDepart" class="champ" required>
     </div>
+    <label for="tim_condition">Condition du timbre: </label>
+    <select name="tim_condition" class="champ">
+        <option value="neuf">Neuf</option>
+        <option value="occasion">Occasion</option>
+    </select><br>
+    <input type="radio" name="tim_certification" value="1"> Certifié
+    <input type="radio" name="tim_certification" value="0"> Non certifié <br>
+
+    <label>Image du timbre: </label>
+    <input type="hidden" name="MAX_FILE_SIZE" value="1000000">
+    <input type="file" name="image" accept=".jpg, .jpeg, .png">
+
     <p>Cette enchère sera publiée par vous {{ session.utilisateur.uti_nom }}</p>
     <div>
-        <button class="newsletter__form__submit" type="submit">Envoyer</button>
+        <button class="newsletter__form__submit" name="submit" type="submit">Envoyer</button>
     </div>
-    <div class="lien">
-        <a href="accueil/index">Aller à la page d'accueil</a>
-    </div>
+    
 </form>
+<div class="lien">
+    <a href="accueil/index">Aller à la page d'accueil</a>
+</div>
         {% endblock %}
