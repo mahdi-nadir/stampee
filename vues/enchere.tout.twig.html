@@ -101,15 +101,17 @@
             </aside>
 
             <section class="catalogue1__principal">
+                {% for enchere in encheres %}
                 <article class="catalogue1__principal__timbre">
-                    <img class="catalogue1__principal__timbre__img" src="ressources/css/accueil/img/" alt="Queen Elizabeth" title="Reine Elizabeth">
-                    <h2 class="catalogue1__principal__timbre__titre">Queen Stamp</h2>
+                    <img class="catalogue1__principal__timbre__img" src="ressources/css/accueil/img/{{enchere.image_principale}}" alt="{{enchere.image_principale}}">
+                    <h2 class="catalogue1__principal__timbre__titre">{{enchere.tim_nom}}</h2>
                     <p class="catalogue1__principal__timbre__presentation">
-                        Lorem ipsum dolor sit amet consectetur
+                        {{enchere.tim_description}}
                     </p>
-                    <a href="timbre/un" class="lienTimbre">voir la fiche</a>
+                    <a href="timbre/un/{{enchere.enc_id}}" class="lienTimbre">voir la fiche</a>
                 </article>
-                <article class="catalogue1__principal__timbre">
+                {% endfor %}
+                <!-- <article class="catalogue1__principal__timbre">
                     <img class="catalogue1__principal__timbre__img" src="ressources/css/accueil/img//stampCat2.jpg" alt="Oak Tree">
                     <h2 class="catalogue1__principal__timbre__titre">Oak Tree</h2>
                     <p class="catalogue1__principal__timbre__presentation">
@@ -148,7 +150,7 @@
                         Lorem ipsum dolor sit amet consectetur
                     </p>
                     <a href="timbre/un" class="lienTimbre">voir la fiche</a>
-                </article>
+                </article> -->
             </section>
         </section>
         <a href="#" class="liTbr">VOIR TOUT</a>

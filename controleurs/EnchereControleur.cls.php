@@ -18,12 +18,17 @@ class EnchereControleur extends Controleur
 
     public function tout()
     {
-        $this->gabarit->affecter('encheres', $this->modele->tout($_SESSION["utilisateur"]->uti_id));
+        $this->gabarit->affecter('encheres', $this->modele->tout());
     }
 
     public function nouveau()
     {
 
+    }
+
+    public function un()
+    {
+        $this->gabarit->affecter('enchere', $this->modele->un($_SESSION['utilisateur']->enc_id));
     }
 
    /*  public function un()

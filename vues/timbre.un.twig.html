@@ -1,19 +1,18 @@
 {% extends "base.twig.html" %}
 
 {% block main %}
-
-        <h1 class="firstTitle">Fiche du Timbre #2403</h1>
+        <h1 class="firstTitle">Fiche du Timbre {{ench.enc_id}}</h1>
         
         <main class="infos">
             <section class="images">
-                    <img class="imgPrincipale" src="ressources/css/accueil/img/eli.jpg" alt="Reine Elizabeth" title="Queen Elizabeth">
+                    <img class="imgPrincipale" src="ressources/css/accueil/img/eli.jpg" alt="Reine Elizabeth" title="{{ench.tim_nom}}">
             </section>
 
             <section class="infosGenerales">
                 <article class="infosTimbre">
-                    <span class="id">Lot #2403</span>
+                    <span class="id">Lot #{{ench.enc_id}}</span>
                     <h1 class="titreTimbre">
-                        Timbre "Queen Elizabeth"
+                        Timbre "{{ ench.tim_nom }}" 
                     </h1>
                     <div class="pays info">
                         <div>
@@ -21,7 +20,7 @@
                             <h3 class="infoTitre">Pays</h3>
                         </div>
                         <div>
-                            <span>Angleterre</span>
+                            <span>{{ ench.tim_pays }}</span>
                         </div>
                     </div><hr>
                     <div class="ville info">
@@ -77,5 +76,4 @@
                 </article>
             </section>
         </main>
-
         {% endblock %}

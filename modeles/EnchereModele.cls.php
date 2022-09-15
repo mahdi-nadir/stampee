@@ -4,7 +4,25 @@ class EnchereModele extends AccesBd
 
     public function tout()
     {
-        return $this->lireTout('SELECT * FROM enchere');
+        return $this->lireTout('SELECT * 
+                                FROM enchere
+                                JOIN timbre 
+                                ON enc_id = tim_enc_id_ce
+                                JOIN `image`
+                                ON img_enc_id_ce = enc_id
+                                ');
+    }
+
+    public function un($id)
+    {
+        return $this->lireUn("SELECT * 
+                                FROM enchere
+                                JOIN timbre 
+                                ON enc_id = tim_enc_id_ce
+                                JOIN `image`
+                                ON img_enc_id_ce = enc_id
+                                WHERE enc_id = :id", 
+                                [':id' => $id]);
     }
 
     public function ajouter($enchere, $utiId)
