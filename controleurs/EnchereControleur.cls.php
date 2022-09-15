@@ -28,13 +28,7 @@ class EnchereControleur extends Controleur
 
    /*  public function un()
     {
-        // Chercher les timbres de la BD 
-        $resultat = $this->modele->un($_POST['ctc_id']);
-
-        // Injecte le résultat dans la 'vue'
-        $this->gabarit->affecter('timbre', $resultat);
-
-        return $resultat;
+        $this->gabarit->affecter('timbre', $this->modele->un($_POST['enc_id']));
         Utilitaire::nouvelleRoute('timbre/un');
     } */
 

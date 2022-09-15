@@ -9,7 +9,12 @@
         $fileError = $_FILES['image']['error'];
         $fileType = $_FILES['image']['type'];
 
-        $fileExt = explode('.', $fileName);
+        $query = "INSERT INTO image (img_id, img_principale, img_enc_id_ce) VALUES (NULL, '$fileNameNew', 12345)";
+        $result = mysqli_query($conn, $query);
+        if(move_uploaded_file($fichier, "ressources/css/accueil/img/$name")) {
+            echo "fichier copié";
+        }
+        /* $fileExt = explode('.', $fileName);
         $fileActualExt = strtolower(end($fileExt));
 
         $allowed = array('jpg', 'jpeg', 'png');
@@ -19,8 +24,6 @@
                 if ($fileSize < 10000) {
                     $fileNameNew = uniqid('');
                     $fileNameNew .= ".".$fileActualExt;
-                    /* $fileDestination = 'ressources/css/accueil/img/'.$fileNameNew;
-                    echo "done"; */
                     move_uploaded_file($fileTmpName, 'ressources/css/accueil/img/'.$fileDestination);
                     $query = "INSERT INTO image (img_principale, img_enc_id_ce) VALUES ('$fileNameNew', $_SESSION[enc_id])";
                     $result = mysqli_query($conn, $query);
@@ -33,6 +36,6 @@
             }
         } else {
             echo "Vous ne pouvez pas télécharger des fichiers de ce type!";
-        }
+        } */
     }
 ?>

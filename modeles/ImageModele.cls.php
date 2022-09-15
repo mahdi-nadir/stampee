@@ -1,21 +1,21 @@
 <?php
-class EnchereModele extends AccesBd
+class ImageModele extends AccesBd
 {
 
-    /* public function tout()
+    public function tout()
     {
         return $this->lireTout('SELECT * FROM image');
-    } */
+    }
 
-    /* public function ajouter($images)
+    public function ajouter($images)
     {
-        //extract($images);
+        extract($images);
         $this->creer(
-            "INSERT INTO image VALUES (NULL, $images, NULL)",
+            "INSERT INTO `image` VALUES (NULL, :img_principale, last_insert_id())",
             [
                 ':img_principale' => $img_principale
             ]);
-    } */
+    }
 
     /*public function retirer($encId)
     {
