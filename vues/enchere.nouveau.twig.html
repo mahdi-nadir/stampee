@@ -2,7 +2,7 @@
 
 {% block main %}
 <h1>Ajouter une enchère</h1>
-<form enctype="multipart/form-data" action="enchere/ajouter" method="post" class="newsletter">
+<form action="enchere/ajouter" method="post" class="newsletter">
     <div>
         <label for="enc_dateDebut">Date de début de l'enchère: </label>
         <input type="date" name="enc_dateDebut" class="champ" required>
@@ -64,13 +64,8 @@
     <input type="radio" name="tim_certification" value="1"> Certifié
     <input type="radio" name="tim_certification" value="0"> Non certifié <br>
 
-    <label>Image du timbre: </label>
-    <input type="hidden" name="MAX_FILE_SIZE" value="1000000">
-    <input type="file" name="image" accept=".jpg, .jpeg, .png">
-
-    <p>Cette enchère sera publiée par vous {{ session.utilisateur.uti_nom }}</p>
     <div>
-        <button class="newsletter__form__submit" name="submit" type="submit">Envoyer</button>
+        <button class="newsletter__form__submit" name="submit" type="submit">Mettre en ligne</button>
     </div>
     
 </form>

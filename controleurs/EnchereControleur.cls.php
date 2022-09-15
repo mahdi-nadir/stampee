@@ -18,7 +18,7 @@ class EnchereControleur extends Controleur
 
     public function tout()
     {
-        $this->gabarit->affecter('encheres', $this->modele->tout());
+        $this->gabarit->affecter('encheres', $this->modele->tout($_SESSION["utilisateur"]->uti_id));
     }
 
     public function nouveau()
@@ -26,9 +26,30 @@ class EnchereControleur extends Controleur
 
     }
 
+   /*  public function un()
+    {
+        // Chercher les timbres de la BD 
+        $resultat = $this->modele->un($_POST['ctc_id']);
+
+        // Injecte le résultat dans la 'vue'
+        $this->gabarit->affecter('timbre', $resultat);
+
+        return $resultat;
+        Utilitaire::nouvelleRoute('timbre/un');
+    } */
+
+
     public function ajouter() {
+        /* if (isset($_POST['submit']) && isset($_FILES['image'])) {
+            $name = $_FILES['image']['name'];
+            $fichier = $_FILES['image']['tmp_name'];
+
+            if(move_uploaded_file($fichier, "ressources/css/accueil/img/$name")) {
+                echo "fichier copié";
+            }
+        } */
         $this->modele->ajouter($_POST, $_SESSION['utilisateur']->uti_id);
-        Utilitaire::nouvelleRoute('enchere/tout');
+        Utilitaire::nouvelleRoute('image/nouveau');
     }
 
     /* public function retirer() {
@@ -37,7 +58,7 @@ class EnchereControleur extends Controleur
     }
 
     public function changer() {
-        $this->modele->changer($_POST);
+        $this->modele->changer($_POST, $_SESSION['utilisateur']->uti_id);
         Utilitaire::nouvelleRoute('enchere/tout');
     }
 

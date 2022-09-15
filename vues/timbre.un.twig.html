@@ -1,10 +1,13 @@
+{% extends "base.twig.html" %}
 
+
+{% block main %}
 
         <h1 class="firstTitle">Fiche du Timbre #2403</h1>
         
         <main class="infos">
             <section class="images">
-                    <img class="imgPrincipale" src="assets/img/eli.jpg" alt="Reine Elizabeth" title="Queen Elizabeth">
+                    <img class="imgPrincipale" src="ressources/css/accueil/img/eli.jpg" alt="Reine Elizabeth" title="Queen Elizabeth">
             </section>
 
             <section class="infosGenerales">
@@ -15,38 +18,38 @@
                     </h1>
                     <div class="pays info">
                         <div>
-                            <img src="assets/icons/location.png" class="icon">
+                            <img src="ressources/css/accueil/icons/location.png" class="icon">
                             <h3 class="infoTitre">Pays</h3>
                         </div>
                         <div>
-                            <img src="assets/icons/england.jpg" class="icon eng">
+                            <img src="ressources/css/accueil/icons/england.jpg" class="icon eng">
                             <span>Angleterre</span>
                         </div>
                     </div><hr>
                     <div class="ville info">
                         <div>
-                            <img src="assets/icons/town.png" class="icon">
+                            <img src="ressources/css/accueil/icons/town.png" class="icon">
                             <h3 class="infoTitre">Ville</h3>
                         </div>
                         <span>Manchester</span>
                     </div><hr>
                     <div class="annee info">
                         <div>
-                            <img src="assets/icons/clock.png" class="icon">
+                            <img src="ressources/css/accueil/icons/clock.png" class="icon">
                             <h3 class="infoTitre">Année de production</h3>
                         </div>
                         <span>1949</span>
                     </div><hr>
                     <div class="dimension info">
                         <div>
-                            <img src="assets/icons/frame.png" class="icon">
+                            <img src="ressources/css/accueil/icons/frame.png" class="icon">
                             <h3 class="infoTitre">Dimensions de l'image</h3>
                         </div>
                         <span>26*18 mm (1*0.7 pc.)</span>
                     </div><hr>
                     <div class="description">
                         <div class="desc">
-                            <img src="assets/icons/pen.png" class="icon">
+                            <img src="ressources/css/accueil/icons/pen.png" class="icon">
                             <h3 class="infoTitre">Description</h3>
                         </div>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, aliquid suscipit cum adipisci provident placeat sapiente ratione praesentium quam, dolorem hic, sunt deleniti autem! Iste nesciunt asperiores cumque blanditiis cupiditate eos quaerat perferendis, dicta sunt eum consequatur temporibus suscipit nobis.</p>
@@ -76,3 +79,5 @@
                 </article>
             </section>
         </main>
+
+        {% endblock %}

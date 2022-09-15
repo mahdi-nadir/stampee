@@ -4,22 +4,33 @@ class TimbreControleur extends Controleur
     public function __construct($modele, $module, $action)
     {
         parent::__construct($modele, $module, $action);
-        if(!isset($_SESSION['utilisateur'])) {
-            Utilitaire::nouvelleRoute('enchere/index');
-        }
+        /* if(isset($_SESSION['utilisateur'])) {
+            Utilitaire::nouvelleRoute('timbre/un');
+        } */
+    }
+
+    public function index()
+    {
+        $this->gabarit->affecterActionParDefaut('tout');
+        $this->tout();
+    }
+
+    public function un()
+    {
+        /* $this->gabarit->affecter('timbre', $this->modele->un($_GET['id'])); */
     }
 
     /**
      * Méthode invoquée par défaut si aucune action n'est indiquée
      */
-    public function index()
+    /* public function index()
     {
         $this->gabarit->affecterActionParDefaut('tout');
         $this->tout();
 
-    }
+    } */
 
-    public function tout()
+    /* public function tout()
     {
         $this->gabarit->affecter('timbres', $this->modele->tout());
         // Nous avons aussi besoin des catégories...
@@ -41,5 +52,5 @@ class TimbreControleur extends Controleur
     public function changer() {
         $this->modele->changer($_POST);
         Utilitaire::nouvelleRoute('timbre/tout');
-    }
+    } */
 }

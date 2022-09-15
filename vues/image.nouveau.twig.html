@@ -1,0 +1,13 @@
+{% extends "base.twig.html" %}
+
+
+{% block main %}
+
+<h1>Ajouter une image pour cette enchère</h1>
+<form action="image/ajouter" method="post" enctype="multipart/form-data" class="newsletter">
+    <input type="hidden" name="MAX_FILE_SIZE" value="1000000">
+    <input type="file" name="image" accept=".jpg, .jpeg, .png">
+    <input type="submit" name="submit" value="Upload it!">
+</form>
+
+{% endblock %}
