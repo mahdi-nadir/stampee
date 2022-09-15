@@ -115,7 +115,7 @@ INSERT INTO `timbre` (`tim_id`, `tim_nom`,  `tim_couleur`, `tim_ville`, `tim_pay
 
 CREATE TABLE `image` (
   `img_id` int(6) UNSIGNED NOT NULL,
-  `img_principale` varchar(255) NOT NULL,
+  `img_principale` varchar(100) NOT NULL,
   `img_enc_id_ce`  tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
