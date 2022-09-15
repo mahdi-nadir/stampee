@@ -1,5 +1,7 @@
-## Interface administrateur du site Web du restaurant Leila
+## Lord Stampee website
 
-Application créée dans le cadriciel MiniMVC (avec Twig) développé en classe.
+Application créée dans le cadriciel MVC (avec Twig).
 
-Work in progress.
+### Work in progress.
+
+***Lord Stampee*** *est un site où les membres ayant un compte peuvent mettre des enchères pour vendre des timbres. Il est à noter que chaque membre peut aussi acheter des timbres après avoir misé sur l'une des enchères disponibles dans le catalogue OU qui ne sont pas encore expirées. *
