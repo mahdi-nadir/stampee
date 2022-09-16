@@ -26,65 +26,85 @@ USE `stampee`;
 -- --------------------------------------------------------
 
 --
--- Structure de la table `adresse`
+-- Structure de la table `utilisateur`
 --
 
 CREATE TABLE `utilisateur` (
-  `uti_id` int(6) UNSIGNED NOT NULL,
+  `uti_id` int(6) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `uti_nom` varchar(25) NOT NULL,
-  `uti_courriel` varchar(75) NOT NULL,
+  `uti_courriel` varchar(75) UNIQUE NOT NULL,
   `uti_mdp` varchar(100) NOT NULL,
-  `uti_age` int(3) NOT NULL,
-  `uti_pays` varchar(25) NOT NULL,
-  `uti_role` varchar(25) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `uti_pays` varchar(25),
+  `uti_role` varchar(25) DEFAULT 'user'
+) ;
 
 --
--- Déchargement des données de la table `adresse`
+-- Déchargement des données de la table `utilisateur`
 --
 
-INSERT INTO `utilisateur` (`uti_id`, `uti_nom`, `uti_courriel`, `uti_mdp`, `uti_age`, `uti_pays`, `uti_role`) VALUES
-(1, 'Mahdi', 'mehdinip@gmail.com', '12345', 32, 'Canada', 'admin'),
-(2, 'John', 'john@gmail.com', '12345', 45, 'USA', 'user'),
-(3, 'Eddy', 'eddy@gmail.com', '12345', 60, 'Canada', 'user'),
-(4, 'Kim Fu', 'kimfu@gmail.com', '12345', 30, 'Japon', 'user');
+INSERT INTO `utilisateur` (`uti_id`, `uti_nom`, `uti_courriel`, `uti_mdp`, `uti_pays`, `uti_role`) VALUES
+(1, 'Mahdi', 'mehdinip@gmail.com', '12345', 'Canada', 'admin'),
+(2, 'John', 'john@gmail.com', '12345', 'USA', DEFAULT),
+(3, 'Eddy', 'eddy@gmail.com', '12345', 'Canada', DEFAULT),
+(4, 'Kim Fu', 'kimfu@gmail.com', '12345', 'Japon', DEFAULT);
 
 -- --------------------------------------------------------
-
 --
 -- Structure de la table `enchere`
 --
 
 CREATE TABLE `enchere` (
-  `enc_id` tinyint(4) NOT NULL,
+  `enc_id` int(6) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `enc_dateDebut` DATE NOT NULL,
   `enc_dateFin` DATE NOT NULL,
   `enc_prixDepart` DECIMAL(10,2) NOT NULL,
   `enc_prixActuel` DECIMAL(10,2) NOT NULL,
-  `enc_nbMises` int(6) NOT NULL DEFAULT '0',
-  `enc_uti_id_ce` int(6) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+  `enc_uti_id_ce` int(6) NOT NULL,
+  FOREIGN KEY (`enc_uti_id_ce`) REFERENCES `utilisateur`(`uti_id`)
+) ;
 
 --
 -- Déchargement des données de la table `enchere`
 --
 
-INSERT INTO `enchere` (`enc_id`, `enc_dateDebut`, `enc_dateFin`, `enc_prixDepart`, `enc_prixActuel`, `enc_nbMises`, `enc_uti_id_ce`) VALUES
-(1, '2022-09-09', '2022-12-12', 100.00, 100.00, 0, 2),
-(2, '2022-08-14', '2022-11-12', 250.00, 300.00, 0, 2),
-(3, '2022-10-14', '2022-12-24', 150.00, 160.00, 0, 3),
-(4, '2022-09-11', '2022-09-25', 175.00, 190.00, 0, 4);
+INSERT INTO `enchere` (`enc_id`, `enc_dateDebut`, `enc_dateFin`, `enc_prixDepart`, `enc_prixActuel`, `enc_uti_id_ce`) VALUES
+(1, '2022-09-09', '2022-12-12', 100.00, 100.00, 2),
+(2, '2022-08-14', '2022-11-12', 250.00, 300.00, 2),
+(3, '2022-10-14', '2022-12-24', 150.00, 160.00, 3),
+(4, '2022-09-11', '2022-09-25', 175.00, 190.00, 4);
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `mise`
+--
+
+CREATE TABLE `mise` (
+  `mis_id` tinyint(6) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `mis_enc_id_ce` int(6) NOT NULL,
+  FOREIGN KEY (`mis_enc_id_ce`) REFERENCES `enchere`(`enc_id`),
+  `mis_uti_id_ce` int(6) NOT NULL,
+  FOREIGN KEY (`mis_uti_id_ce`) REFERENCES `utilisateur`(`uti_id`)
+) ;
+
+--
+-- Déchargement des données de la table `mise`
+--
+
+INSERT INTO `mise` (`mis_id`, `mis_enc_id_ce`, `mis_uti_id_ce`) VALUES
+(1, 4, 2),
+(2, 3, 3),
+(3, 2, 1),
+(4, 1, 4);
 
 
 -- --------------------------------------------------------
-
 --
 -- Structure de la table `timbre`
 --
 
 CREATE TABLE `timbre` (
-  `tim_id` smallint(6) NOT NULL UNIQUE,
-  `tim_nom` varchar(100) NOT NULL,
+  `tim_id` int(6) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `tim_nom` varchar(100) NOT NULL UNIQUE,
   `tim_couleur` varchar(20) NOT NULL,
   `tim_ville` varchar(30) NOT NULL,
   `tim_pays` varchar(30) NOT NULL,
@@ -93,8 +113,9 @@ CREATE TABLE `timbre` (
   `tim_dimensions` varchar(30) NOT NULL,
   `tim_condition` varchar(25) NOT NULL,
   `tim_certification` boolean NOT NULL,
-  `tim_enc_id_ce` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+  `tim_enc_id_ce` int(6) NOT NULL,
+  FOREIGN KEY (`tim_enc_id_ce`) REFERENCES `enchere`(`enc_id`)
+)  ;
 
 --
 -- Déchargement des données de la table `timbre`
@@ -108,113 +129,24 @@ INSERT INTO `timbre` (`tim_id`, `tim_nom`,  `tim_couleur`, `tim_ville`, `tim_pay
 
 
 -- --------------------------------------------------------
-
 --
 -- Structure de la table `image`
 --
 
 CREATE TABLE `image` (
-  `img_id` int(6) UNSIGNED NOT NULL,
-  `img_principale` varchar(100) NOT NULL,
-  `img_enc_id_ce`  tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `img_id` int(6) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `img_path` varchar(100) NOT NULL,
+  `img_tim_id_ce` int(6) NOT NULL,
+  FOREIGN KEY (`img_tim_id_ce`) REFERENCES `timbre`(`tim_id`)
+) ;
 
 --
 -- Déchargement des données de la table `image`
 --
 
-INSERT INTO `image` (`img_id`, `img_principale`, `img_enc_id_ce`) VALUES
-(1, 'image1', 1),
-(2, 'image2', 2),
-(3, 'image3', 3),
-(4, 'image4', 4);
+INSERT INTO `image` (`img_id`, `img_path`, `img_tim_id_ce`) VALUES
+(1, 'a', 1),
+(2, 'b', 2),
+(3, 'c', 3),
+(4, 'd', 4);
 
--- --------------------------------------------------------
-
---
--- Structure de la table `vin`
---
-
-
---
--- Index pour les tables déchargées
---
-
---
--- Index pour la table `utilisateur`
---
-ALTER TABLE `utilisateur`
-  ADD PRIMARY KEY (`uti_id`),
-  ADD UNIQUE KEY `uti_nom` (`uti_nom`),
-  ADD UNIQUE KEY `uti_courriel` (`uti_courriel`);
-
---
--- Index pour la table `enchere`
---
-ALTER TABLE `enchere`
-  ADD PRIMARY KEY (`enc_id`);
-
---
--- Index pour la table `timbre`
---
-ALTER TABLE `timbre`
-  ADD PRIMARY KEY (`tim_id`),
-  ADD UNIQUE KEY `tim_nom` (`tim_nom`);
-
---
--- Index pour la table `image`
---
-ALTER TABLE `image`
-  ADD PRIMARY KEY (`img_id`),
-  ADD UNIQUE KEY `img_principale` (`img_principale`);
-
---
--- AUTO_INCREMENT pour les tables déchargées
---
-
---
--- AUTO_INCREMENT pour la table `utilisateur`
---
-ALTER TABLE `utilisateur`
-  MODIFY `uti_id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT pour la table `enchere`
---
-ALTER TABLE `enchere`
-  MODIFY `enc_id` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
--- AUTO_INCREMENT pour la table `timbre`
---
-ALTER TABLE `timbre`
-  MODIFY `tim_id` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
-
---
--- AUTO_INCREMENT pour la table `image`
---
-ALTER TABLE `image`
-  MODIFY `img_id` tinyint(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
-
---
--- Contraintes pour les tables déchargées
---
-
---
--- Contraintes pour la table `plat`
---
-ALTER TABLE `enchere`
-  ADD CONSTRAINT `enchere_ibfk_1` FOREIGN KEY (`enc_uti_id_ce`) REFERENCES `utilisateur` (`uti_id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Contraintes pour la table `vin`
---
-ALTER TABLE `timbre`
-  ADD CONSTRAINT `timbre_ibfk_1` FOREIGN KEY (`tim_enc_id_ce`) REFERENCES `enchere` (`enc_id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
-ALTER TABLE `image`
-  ADD CONSTRAINT `image_ibfk_1` FOREIGN KEY (`img_enc_id_ce`) REFERENCES `enchere` (`enc_id`) ON DELETE CASCADE ON UPDATE CASCADE;
-COMMIT;
-
--- --------------------------------------------------------
