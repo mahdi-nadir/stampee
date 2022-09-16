@@ -9,6 +9,7 @@
         <label for="tim_nom">Nom du timbre: </label>
         <input type="text" name="tim_nom" class="champ" required>
     </div>
+    
     <label for="tim_couleur">Couleur du timbre: </label>
     <select name="tim_couleur" class="champ">
         <option value="bleu">Bleu</option>
@@ -23,6 +24,7 @@
         <option value="marron">Marron</option>
         <option value="gris">Gris</option>
     </select>
+    
     <div>
         <label for="tim_ville">Ville de création du timbre: </label>
         <input type="text" name="tim_ville" class="champ" required>
@@ -48,6 +50,7 @@
         <option value="neuf">Neuf</option>
         <option value="occasion">Occasion</option>
     </select><br>
+    
     <input type="radio" name="tim_certification" value="1"> Certifié
     <input type="radio" name="tim_certification" value="0"> Non certifié <br>
 
@@ -63,11 +66,12 @@
         <label for="enc_prixDepart">Montant de départ: </label>
         <input type="text" name="enc_prixDepart" class="champ" required>
     </div>
+    
     <div>
         <input type="hidden" name="MAX_FILE_SIZE" value="1000000">
         <input type="file" name="image" accept=".jpg, .jpeg, .png">
-        <!-- <input type="submit" name="submit" value="Upload it!"> -->
     </div>
+
     <div>
         <label for="tim_description">Description du timbre: </label>
         <textarea name="tim_description" class="champ" required>
