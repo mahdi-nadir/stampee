@@ -39,15 +39,16 @@ class EnchereControleur extends Controleur
 
 
     public function ajouter() {
-        /* if (isset($_POST['submit']) && isset($_FILES['image'])) {
+        if (isset($_POST['submit'])) {
             $name = $_FILES['image']['name'];
             $fichier = $_FILES['image']['tmp_name'];
-
-            if(move_uploaded_file($fichier, "ressources/css/accueil/img/$name")) {
+    
+            if(move_uploaded_file($fichier, "ressources/css/accueil/immg/$name")) {
                 echo "fichier copié";
             }
-        } */
-        $this->modele->ajouter($_POST, $_SESSION['utilisateur']->uti_id);
+        }
+        
+        $this->modele->ajouter($_POST, $_SESSION['utilisateur']->uti_id, $name);
         Utilitaire::nouvelleRoute('image/nouveau');
     }
 

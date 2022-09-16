@@ -9,27 +9,35 @@ class EnchereModele extends AccesBd
                                 JOIN timbre 
                                 ON enc_id = tim_enc_id_ce
                                 JOIN `image`
-                                ON img_enc_id_ce = enc_id
-                                ');
+                                ON img_tim_id_ce = tim_id
+                            ');
     }
 
     public function un($id)
     {
-        return $this->lireUn("SELECT * 
+        return $this->lireUn("  SELECT * 
                                 FROM enchere
                                 JOIN timbre 
                                 ON enc_id = tim_enc_id_ce
                                 JOIN `image`
-                                ON img_enc_id_ce = enc_id
+                                ON img_tim_id_ce = tim_id
                                 WHERE enc_id = :id", 
-                                [':id' => $id]);
+                                [':id' => $id]
+                            );
     }
 
-    public function ajouter($enchere, $utiId)
+    public function ajouter($enchere, $utiId, $name)
     {
         extract($enchere);
         $this->creer(
-            "INSERT INTO enchere VALUES (0, :enc_dateDebut, :enc_dateFin, :enc_prixDepart, :enc_prixDepart+1, 0, $utiId); INSERT INTO timbre VALUES (NULL, :tim_nom, :tim_couleur, :tim_ville, :tim_pays, :tim_dateCreation, :tim_description, :tim_dimensions, :tim_condition, :tim_certification, last_insert_id())/* ; INSERT INTO image VALUES (NULL, :img_principale, last_insert_id()) */",
+            "INSERT INTO enchere 
+            VALUES (0, :enc_dateDebut, :enc_dateFin, :enc_prixDepart, :enc_prixDepart+1, $utiId);
+
+            INSERT INTO timbre 
+            VALUES (NULL, :tim_nom, :tim_couleur, :tim_ville, :tim_pays, :tim_dateCreation, :tim_description, :tim_dimensions, :tim_condition, :tim_certification, last_insert_id());
+
+            INSERT INTO `image` 
+            VALUES (NULL, :img_path, last_insert_id())",
             [
                 ':enc_dateDebut' => $enc_dateDebut,
                 ':enc_dateFin' => $enc_dateFin,
@@ -42,8 +50,8 @@ class EnchereModele extends AccesBd
                 ':tim_description' => $tim_description,
                 ':tim_dimensions' => $tim_dimensions,
                 ':tim_condition' => $tim_condition,
-                ':tim_certification' => $tim_certification/* ,
-                ':img_principale' => $img_principale */
+                ':tim_certification' => $tim_certification,
+                ':img_path' => $name
             ]);
     }
 
