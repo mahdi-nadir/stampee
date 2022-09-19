@@ -14,12 +14,13 @@ class UtilisateurModele extends AccesBd
     public function ajouter($utilisateur)
     {
         extract($utilisateur);
-        $this->creer("INSERT INTO utilisateur (uti_id, uti_nom, uti_courriel, uti_mdp,uti_pays, uti_role) 
-                        VALUES (NULL, :nom, :courriel, :mdp, :pays, DEFAULT)", [
-                                "nom"       => $uti_nom, 
-                                "courriel"  => $uti_courriel, 
-                                "mdp"       => password_hash($uti_mdp, PASSWORD_DEFAULT), 
-                                "pays"      => $uti_pays
+        $this->creer("  INSERT INTO utilisateur 
+                        VALUES (NULL, :uti_nom, :uti_courriel, :uti_mdp, :uti_pays, DEFAULT)", 
+                            [
+                                "uti_nom"       => $uti_nom, 
+                                "uti_courriel"  => $uti_courriel, 
+                                "uti_mdp"       => password_hash($uti_mdp, PASSWORD_DEFAULT), 
+                                "uti_pays"      => $uti_pays
                             ]);
     }
 }

@@ -1,16 +1,22 @@
 {% extends "base.twig.html" %}
 
 {% block main %}
-        <h1 class="firstTitle">Fiche du Timbre {{ench.enc_id}}</h1>
+            <!-- <form action="enchere" method="post">
+                <button formaction="enchere/retirer" name="supprimer">Supprimer l'enchère</button>
+                <button formaction="enchere/changer" name="modifier">Modifier l'enchère</button>
+            </form> -->
+            
+
+        <h1 class="firstTitle">Fiche du Timbre {{enchere.enc_id}}</h1>
         
         <main class="infos">
             <section class="images">
-                    <img class="imgPrincipale" src="ressources/css/accueil/img/eli.jpg" alt="Reine Elizabeth" title="{{ench.tim_nom}}">
+                    <img class="imgPrincipale" src="ressources/css/accueil/img/{{enchere.img_path}}" alt="{{encheres.img_path}}" title="{{enchere.img_path}}">
             </section>
 
             <section class="infosGenerales">
                 <article class="infosTimbre">
-                    <span class="id">Lot #{{ench.enc_id}}</span>
+                    <span class="id">Lot #{{enchere.enc_id}}</span>
                     <h1 class="titreTimbre">
                         Timbre "{{ ench.tim_nom }}" 
                     </h1>

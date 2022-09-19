@@ -29,6 +29,7 @@ class EnchereControleur extends Controleur
     public function un()
     {
         $this->gabarit->affecter('enchere', $this->modele->un($_SESSION['utilisateur']->uti_id));
+        /* Utilitaire::nouvelleRoute('enchere/un'); */
     }
 
    /*  public function un()
@@ -55,9 +56,9 @@ class EnchereControleur extends Controleur
     /* public function retirer() {
         $this->modele->retirer($_POST['enc_id']);
         Utilitaire::nouvelleRoute('enchere/tout');
-    }
+    } */
 
-    public function changer() {
+    /*public function changer() {
         $this->modele->changer($_POST, $_SESSION['utilisateur']->uti_id);
         Utilitaire::nouvelleRoute('enchere/tout');
     }

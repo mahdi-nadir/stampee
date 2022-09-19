@@ -4,9 +4,9 @@ class UtilisateurControleur extends Controleur
     function __construct($modele, $module, $action)
     {
         parent::__construct($modele, $module, $action);
-        if(isset($_SESSION['utilisateur'])) {
+        /* if(isset($_SESSION['utilisateur'])) {
             Utilitaire::nouvelleRoute('accueil/index');
-        }
+        } */
     }
 
     public function index()
@@ -37,6 +37,7 @@ class UtilisateurControleur extends Controleur
         $mdp = $_POST['uti_mdp'];
         
         $utilisateur = $this->modele->un($courriel);
+        
 
         $erreur = false;
         if(!$utilisateur || !password_verify($mdp, $utilisateur->uti_mdp)) {

@@ -21,8 +21,8 @@ class EnchereModele extends AccesBd
                                 ON enc_id = tim_enc_id_ce
                                 JOIN `image`
                                 ON img_tim_id_ce = tim_id
-                                WHERE enc_id = :id", 
-                                [':id' => $id]
+                                WHERE enc_id = :enc_id", 
+                                [':enc_id' => $id]
                             );
     }
 
@@ -55,16 +55,22 @@ class EnchereModele extends AccesBd
             ]);
     }
 
-    /*public function retirer($encId)
+    public function retirer($utiId, $name)
     {
-        $this->supprimer("DELETE FROM encegorie WHERE enc_id=:enc_id"
-            , ['enc_id' => $encId]);
+        $this->supprimer("DELETE FROM enchere 
+                        WHERE enc_uti_id_ce = $utiId",
+
+                        "DELETE FROM timbre
+                        WHERE tim_enc_id_ce = enc_id",
+                        
+                        "DELETE FROM `image`
+                        WHERE img_tim_id_ce = tim_id");
     }
 
-    public function changer($encegorie)
+    /*public function changer($enchere)
     {
-        extract($encegorie);
-        $this->modifier("UPDATE encegorie 
+        extract($enchere);
+        $this->modifier("UPDATE enchere 
                             SET enc_nom=:enc_nom, enc_type=:enc_type
                         WHERE enc_id=:enc_id"
             , ['enc_id' => $enc_id, 'enc_nom' => $enc_nom, 'enc_type'=> $enc_type]);
