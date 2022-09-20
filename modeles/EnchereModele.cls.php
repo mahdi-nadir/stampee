@@ -13,17 +13,21 @@ class EnchereModele extends AccesBd
                             ');
     }
 
-    public function un($id)
+    public function un($enc_id)
     {
+        /* extract($id); */
         return $this->lireUn("  SELECT * 
                                 FROM enchere
                                 JOIN timbre 
                                 ON enc_id = tim_enc_id_ce
                                 JOIN `image`
                                 ON img_tim_id_ce = tim_id
-                                WHERE enc_id = :enc_id", 
-                                [':enc_id' => $id]
-                            );
+                                WHERE enc_id = $enc_id");
+    }
+
+    public function utilisateur($utiId)
+    {
+        return $this->lireTout("SELECT * FROM utilisateur WHERE uti_id = $utiId");
     }
 
     public function ajouter($enchere, $utiId, $name)
@@ -55,7 +59,7 @@ class EnchereModele extends AccesBd
             ]);
     }
 
-    public function retirer($utiId, $name)
+   /*  public function retirer($utiId, $name)
     {
         $this->supprimer("DELETE FROM enchere 
                         WHERE enc_uti_id_ce = $utiId",
@@ -65,7 +69,7 @@ class EnchereModele extends AccesBd
                         
                         "DELETE FROM `image`
                         WHERE img_tim_id_ce = tim_id");
-    }
+    } */
 
     /*public function changer($enchere)
     {

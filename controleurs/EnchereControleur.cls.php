@@ -1,6 +1,7 @@
 <?php
 class EnchereControleur extends Controleur
 {
+
     public function __construct($modele, $module, $action)
     {
         parent::__construct($modele, $module, $action);
@@ -26,18 +27,15 @@ class EnchereControleur extends Controleur
 
     }
 
-    public function un()
+    public function detail($params)
     {
-        $this->gabarit->affecter('enchere', $this->modele->un($_SESSION['utilisateur']->uti_id));
-        /* Utilitaire::nouvelleRoute('enchere/un'); */
+        $this->gabarit->affecter('enchere', $this->modele->un($params[0]));
     }
-
-   /*  public function un()
+    
+    public function utilisateur()
     {
-        $this->gabarit->affecter('timbre', $this->modele->un($_POST['enc_id']));
-        Utilitaire::nouvelleRoute('timbre/un');
-    } */
-
+        $this->gabarit->affecter('user', $this->modele->utilisateur($_SESSION['utilisateur']->uti_id));
+    }
 
     public function ajouter() {
         if (isset($_POST['submit'])) {

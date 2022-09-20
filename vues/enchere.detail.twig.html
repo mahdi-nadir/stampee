@@ -1,24 +1,18 @@
 {% extends "base.twig.html" %}
 
 {% block main %}
-            <!-- <form action="enchere" method="post">
-                <button formaction="enchere/retirer" name="supprimer">Supprimer l'enchère</button>
-                <button formaction="enchere/changer" name="modifier">Modifier l'enchère</button>
-            </form> -->
-            
-
         <h1 class="firstTitle">Fiche du Timbre {{enchere.enc_id}}</h1>
         
         <main class="infos">
             <section class="images">
-                    <img class="imgPrincipale" src="ressources/css/accueil/img/{{enchere.img_path}}" alt="{{encheres.img_path}}" title="{{enchere.img_path}}">
+                    <img class="imgPrincipale" src="ressources/css/accueil/immg/{{enchere.img_path}}" alt="{{enchere.img_path}}" title="{{enchere.img_path}}">
             </section>
 
             <section class="infosGenerales">
                 <article class="infosTimbre">
                     <span class="id">Lot #{{enchere.enc_id}}</span>
                     <h1 class="titreTimbre">
-                        Timbre "{{ ench.tim_nom }}" 
+                        Timbre "{{ enchere.tim_nom }}" 
                     </h1>
                     <div class="pays info">
                         <div>
@@ -26,7 +20,7 @@
                             <h3 class="infoTitre">Pays</h3>
                         </div>
                         <div>
-                            <span>{{ ench.tim_pays }}</span>
+                            <span>{{ enchere.tim_pays }}</span>
                         </div>
                     </div><hr>
                     <div class="ville info">
@@ -34,28 +28,28 @@
                             <img src="ressources/css/accueil/icons/town.png" class="icon">
                             <h3 class="infoTitre">Ville</h3>
                         </div>
-                        <span>Manchester</span>
+                        <span>{{ enchere.tim_ville }}</span>
                     </div><hr>
                     <div class="annee info">
                         <div>
                             <img src="ressources/css/accueil/icons/clock.png" class="icon">
                             <h3 class="infoTitre">Année de production</h3>
                         </div>
-                        <span>1949</span>
+                        <span>{{ enchere.tim_dateCreation }}</span>
                     </div><hr>
                     <div class="dimension info">
                         <div>
                             <img src="ressources/css/accueil/icons/frame.png" class="icon">
                             <h3 class="infoTitre">Dimensions de l'image</h3>
                         </div>
-                        <span>26*18 mm (1*0.7 pc.)</span>
+                        <span>{{ enchere.tim_dimensions }}</span>
                     </div><hr>
                     <div class="description">
                         <div class="desc">
                             <img src="ressources/css/accueil/icons/pen.png" class="icon">
                             <h3 class="infoTitre">Description</h3>
                         </div>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, aliquid suscipit cum adipisci provident placeat sapiente ratione praesentium quam, dolorem hic, sunt deleniti autem! Iste nesciunt asperiores cumque blanditiis cupiditate eos quaerat perferendis, dicta sunt eum consequatur temporibus suscipit nobis.</p>
+                        <p>{{ enchere.tim_description }}</p>
                     </div>
                 </article>
 
@@ -68,17 +62,25 @@
                     <h1 class="prixRecent">7.600 £</h1>
                     <button class="mise">placer une mise</button>
                     <h3 class="enchereTitres">Valeur estimée:</h3>
-                    <h3 class="prixEstime">3000 - 5000 £</h3>
+                    <h3 class="prixEstime">{{ enchere.enc_prixDepart }} £</h3>
                     <hr class="separateur">
-                    <h3 class="enchereTitres fin">Fin de l'enchère dans:</h3>
-                        <span class="time">52h</span>
-                        <span class="time">13m</span>
+                    <h3 class="enchereTitres fin">Fin de l'enchère à:</h3>
+                        <span class="time">{{ enchere.enc_dateFin }}</span> <span class="time">23:59</span>
+                        <!-- <span class="time">13m</span> -->
                         <span class="timeSpan"><i>Greenwich Mean Time (GMT)</i></span>
                     <hr class="separateur">
                     <div class="convertPrint">
                         <button>convertisseur de devises</button>
                         <button>imprimer</button>
                     </div>
+                    {% if session.utilisateur %}
+                    {% if session.utilisateur.uti_id == enchere.enc_uti_id_ce %}
+                    <form class="convertPrint" action="enchere" method="post">
+                        <button formaction="enchere/retirer" name="supprimer">Supprimer l'enchère</button>
+                        <button formaction="enchere/changer" name="modifier">Modifier l'enchère</button>
+                    </form>
+                    {% endif %}
+                    {% endif %}
                 </article>
             </section>
         </main>
