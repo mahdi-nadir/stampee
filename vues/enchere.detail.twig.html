@@ -72,14 +72,15 @@
                     <div class="convertPrint">
                         <button>convertisseur de devises</button>
                         <button>imprimer</button>
-                    </div>
+                    </div>{{enchere.enc_id}}
                     {% if session.utilisateur %}
-                    {% if session.utilisateur.uti_id == enchere.enc_uti_id_ce %}
-                    <form class="convertPrint" action="enchere" method="post">
-                        <button formaction="enchere/retirer" name="supprimer">Supprimer l'enchère</button>
-                        <button formaction="enchere/changer" name="modifier">Modifier l'enchère</button>
-                    </form>
-                    {% endif %}
+                        {% if session.utilisateur.uti_id == enchere.enc_uti_id_ce %}
+                        <form class="convertPrint" action="enchere" method="post">
+                            <input type="hidden" name="enc_id" value="{{enchere.enc_id}}">
+                            <button formaction="enchere/retirer" name="supprimer">Supprimer l'enchère</button>
+                            <button formaction="enchere/modification/{{enchere.enc_id}}" name="modifier">Modifier l'enchère</button>
+                        </form>
+                        {% endif %}
                     {% endif %}
                 </article>
             </section>

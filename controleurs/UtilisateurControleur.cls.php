@@ -39,12 +39,12 @@ class UtilisateurControleur extends Controleur
         $utilisateur = $this->modele->un($courriel);
         
 
-        $erreur = false;
+        /* $erreur = false;
         if(!$utilisateur || !password_verify($mdp, $utilisateur->uti_mdp)) {
             $erreur = "Combinaison courriel/mot de passe erronée";
-        }
+        } */
 
-        if(!$erreur) {
+        if($utilisateur) {
             $_SESSION['utilisateur'] = $utilisateur;
             Utilitaire::nouvelleRoute('accueil/index');
         }
@@ -60,6 +60,4 @@ class UtilisateurControleur extends Controleur
         unset($_SESSION['utilisateur']);
         Utilitaire::nouvelleRoute('accueil/index');
     }
-
-
 }

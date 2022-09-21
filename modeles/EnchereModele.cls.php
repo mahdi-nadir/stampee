@@ -15,7 +15,6 @@ class EnchereModele extends AccesBd
 
     public function un($enc_id)
     {
-        /* extract($id); */
         return $this->lireUn("  SELECT * 
                                 FROM enchere
                                 JOIN timbre 
@@ -25,10 +24,10 @@ class EnchereModele extends AccesBd
                                 WHERE enc_id = $enc_id");
     }
 
-    public function utilisateur($utiId)
+    /* public function utilisateur($utiId)
     {
         return $this->lireTout("SELECT * FROM utilisateur WHERE uti_id = $utiId");
-    }
+    } */
 
     public function ajouter($enchere, $utiId, $name)
     {
@@ -38,10 +37,10 @@ class EnchereModele extends AccesBd
             VALUES (0, :enc_dateDebut, :enc_dateFin, :enc_prixDepart, :enc_prixDepart+1, $utiId);
 
             INSERT INTO timbre 
-            VALUES (NULL, :tim_nom, :tim_couleur, :tim_ville, :tim_pays, :tim_dateCreation, :tim_description, :tim_dimensions, :tim_condition, :tim_certification, last_insert_id());
+            VALUES (0, :tim_nom, :tim_couleur, :tim_ville, :tim_pays, :tim_dateCreation, :tim_description, :tim_dimensions, :tim_condition, :tim_certification, last_insert_id());
 
             INSERT INTO `image` 
-            VALUES (NULL, :img_path, last_insert_id())",
+            VALUES (0, :img_path, last_insert_id())",
             [
                 ':enc_dateDebut' => $enc_dateDebut,
                 ':enc_dateFin' => $enc_dateFin,
@@ -59,24 +58,45 @@ class EnchereModele extends AccesBd
             ]);
     }
 
-   /*  public function retirer($utiId, $name)
+    public function retirer($encId)
     {
-        $this->supprimer("DELETE FROM enchere 
-                        WHERE enc_uti_id_ce = $utiId",
+        $this->supprimer("DELETE FROM `image`
+                        WHERE img_tim_id_ce = $encId;
+                        DELETE FROM timbre
+                        WHERE tim_enc_id_ce = $encId;
+                        DELETE FROM enchere 
+                        WHERE enc_id = $encId");
+    }
 
-                        "DELETE FROM timbre
-                        WHERE tim_enc_id_ce = enc_id",
-                        
-                        "DELETE FROM `image`
-                        WHERE img_tim_id_ce = tim_id");
-    } */
-
-    /*public function changer($enchere)
+    public function changer($infos, $name)
     {
-        extract($enchere);
+        extract($infos);
         $this->modifier("UPDATE enchere 
-                            SET enc_nom=:enc_nom, enc_type=:enc_type
-                        WHERE enc_id=:enc_id"
-            , ['enc_id' => $enc_id, 'enc_nom' => $enc_nom, 'enc_type'=> $enc_type]);
-    }*/
-} 
+                        SET enc_dateDebut = :enc_dateDebut, enc_dateFin = :enc_dateFin, enc_prixDepart = :enc_prixDepart, enc_prixActuel = :enc_prixDepart+1
+                        WHERE enc_id = :enc_id;
+                        
+                        UPDATE timbre
+                        SET tim_nom = :tim_nom, tim_couleur = :tim_couleur, tim_ville = :tim_ville, tim_pays = :tim_pays, tim_dateCreation = :tim_dateCreation, tim_description = :tim_description, tim_dimensions = :tim_dimensions, tim_condition = :tim_condition, tim_certification = :tim_certification
+                        WHERE tim_enc_id_ce = :enc_id;
+
+                        UPDATE `image`
+                        SET img_path = :img_path
+                        WHERE img_tim_id_ce = :enc_id",
+                        [
+                            ':enc_dateDebut' => $enc_dateDebut,
+                            ':enc_dateFin' => $enc_dateFin,
+                            ':enc_prixDepart' => $enc_prixDepart,
+                            ':enc_id' => $enc_id,
+                            ':tim_nom' => $tim_nom,
+                            ':tim_couleur' => $tim_couleur,
+                            ':tim_ville' => $tim_ville,
+                            ':tim_pays' => $tim_pays,
+                            ':tim_dateCreation' => $tim_dateCreation,
+                            ':tim_description' => $tim_description,
+                            ':tim_dimensions' => $tim_dimensions,
+                            ':tim_condition' => $tim_condition,
+                            ':tim_certification' => $tim_certification,
+                            ':img_path' => $name
+                        ]);
+                    }
+                } 

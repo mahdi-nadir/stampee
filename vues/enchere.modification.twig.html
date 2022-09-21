@@ -1,0 +1,93 @@
+{% extends "base.twig.html" %}
+
+{% block main %}
+<h1>Modifier une enchère</h1>
+<form action="enchere/changer" method="post" class="newsletter" enctype="multipart/form-data">
+
+    <input type="hidden" name="enc_id" value="{{ench.enc_id}}">
+    
+    <div>
+        <label for="tim_nom">Nom du timbre: </label>
+        <input type="text" name="tim_nom" class="champ" value="{{ench.tim_nom}}" required>
+    </div>
+    
+    <label for="tim_couleur">Couleur du timbre: </label>
+    <select name="tim_couleur" class="champ" value="{{ench.tim_couleur}}">
+        <option value="bleu">Bleu</option>
+        <option value="rouge">Rouge</option>
+        <option value="vert">Vert</option>
+        <option value="jaune">Jaune</option>
+        <option value="violet">Violet</option>
+        <option value="orange">Orange</option>
+        <option value="rose">Rose</option>
+        <option value="noir">Noir</option>
+        <option value="blanc">Blanc</option>
+        <option value="marron">Marron</option>
+        <option value="gris">Gris</option>
+    </select>
+    
+    <div>
+        <label for="tim_ville">Ville de création du timbre: </label>
+        <input type="text" name="tim_ville" class="champ" value="{{ench.tim_ville}}" required>
+    </div>
+    <div>
+        <label for="tim_pays">Pays de création du timbre </label>
+        <input type="text" name="tim_pays" class="champ" value="{{ench.tim_pays}}" required>
+    </div>
+    <div>
+        <label for="tim_dateCreation">Date de création du timbre </label>
+        <input type="date" name="tim_dateCreation" class="champ" value="{{ench.tim_dateCreation}}" required>
+    </div>
+    
+    <label for="tim_dimensions">Dimensions du timbre: </label>
+    <select name="tim_dimensions" class="champ" value="{{ench.tim_dimensions}}">
+        <option value="2.5 x 3.5 cm">2.5 x 3.5 cm</option>
+        <option value="2.8 x 3.8 cm">2.8 x 3.8 cm</option>
+        <option value="3 x 4.2 cm">3 x 4.2 cm</option>
+    </select><br>
+    
+    <label for="tim_condition">Condition du timbre: </label>
+    <select name="tim_condition" class="champ" value="{{ench.tim_condition}}">
+        <option value="neuf">Neuf</option>
+        <option value="occasion">Occasion</option>
+    </select><br>
+    
+    <input type="radio" name="tim_certification" value="1" {{ (ench.tim_certification == 1) ? 'checked' : '' }}> Certifié
+    <input type="radio" name="tim_certification" value="0" {{ (ench.tim_certification == 0) ? 'checked' : '' }}> Non certifié <br>
+
+    <div>
+        <label for="enc_dateDebut">Date de début de l'enchère: </label>
+        <input type="date" name="enc_dateDebut" class="champ" value="{{ench.enc_dateDebut}}" required>
+    </div>
+    <div>
+        <label for="enc_dateFin">Date de fin de l'enchère: </label>
+        <input type="date" name="enc_dateFin" class="champ" value="{{ench.enc_dateFin}}" required>
+    </div>
+    <div>
+        <label for="enc_prixDepart">Prix de départ: </label>
+        <input type="text" name="enc_prixDepart" class="champ" value="{{ench.enc_prixDepart}}" required>
+    </div>
+    
+    <div>
+        <input type="hidden" name="MAX_FILE_SIZE" value="1000000">
+        <input type="file" name="image" accept=".jpg, .jpeg, .png">
+    </div>
+    <div>
+        <img src="ressources/css/accueil/immg/{{ench.img_path}}" alt="{{ench.img_path}}">
+    </div>
+
+    <div>
+        <label for="tim_description">Description du timbre: </label>
+        <textarea name="tim_description" class="champ" required>{{ench.tim_description}}
+        </textarea>
+    </div>
+
+    <div>
+        <button class="newsletter__form__submit" name="submit" type="submit">Mettre à jour</button>
+    </div>
+    
+</form>
+<div class="lien">
+    <a href="accueil/index">Aller à la page d'accueil</a>
+</div>
+        {% endblock %}

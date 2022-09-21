@@ -58,8 +58,8 @@ CREATE TABLE `enchere` (
   `enc_id` int(6) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `enc_dateDebut` DATE NOT NULL,
   `enc_dateFin` DATE NOT NULL,
-  `enc_prixDepart` DECIMAL(10,2) NOT NULL,
-  `enc_prixActuel` DECIMAL(10,2) NOT NULL,
+  `enc_prixDepart` int(10) NOT NULL,
+  `enc_prixActuel` int(10) NOT NULL,
   `enc_uti_id_ce` int(6) NOT NULL,
   FOREIGN KEY (`enc_uti_id_ce`) REFERENCES `utilisateur`(`uti_id`)
 ) ;
