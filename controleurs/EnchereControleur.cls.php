@@ -32,11 +32,15 @@ class EnchereControleur extends Controleur
         $this->gabarit->affecter('encheres', $this->modele->tout());
     }
 
-    
+    public function mise()
+    {
+        $this->gabarit->affecter('mises', $this->modele->mise($_POST['enc_id']));
+    }
 
     public function detail($params)
     {
         $this->gabarit->affecter('enchere', $this->modele->un($params[0]));
+        /* $this->gabarit->affecter('mises', $this->modele->mise($_POST['enc_id'])); */
     }
 
     public function ajouter() {
@@ -72,8 +76,5 @@ class EnchereControleur extends Controleur
         Utilitaire::nouvelleRoute('enchere/tout');
     }
 
-    /*public function changerPrix() {
-        $this->modele->changer($_POST);
-        Utilitaire::nouvelleRoute('enchere/tout');
-    } */
+
 }

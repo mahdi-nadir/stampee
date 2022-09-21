@@ -59,9 +59,12 @@
                         <button>voir historique des mises</button>
                     </div>
                     <h3 class="enchereTitres">Dernière mise:</h3>
-                    <h1 class="prixRecent">7.600 £</h1>
-                    <button class="mise">placer une mise</button>
-                    <h3 class="enchereTitres">Valeur estimée:</h3>
+                    <h1 class="prixRecent">{{enchere.mis_depose}} £</h1>
+                    <a href="enchere/mise">
+                        <input type="hidden" name="enc_id" value="{{enchere.enc_id}}">
+                        <button class="mise">placer une mise</button>
+                    </a>
+                    <h3 class="enchereTitres">Valeur de début:</h3>
                     <h3 class="prixEstime">{{ enchere.enc_prixDepart }} £</h3>
                     <hr class="separateur">
                     <h3 class="enchereTitres fin">Fin de l'enchère à:</h3>
@@ -72,7 +75,7 @@
                     <div class="convertPrint">
                         <button>convertisseur de devises</button>
                         <button>imprimer</button>
-                    </div>{{enchere.enc_id}}
+                    </div>
                     {% if session.utilisateur %}
                         {% if session.utilisateur.uti_id == enchere.enc_uti_id_ce %}
                         <form class="convertPrint" action="enchere" method="post">

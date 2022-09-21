@@ -90,7 +90,7 @@ CREATE TABLE `timbre` (
   `tim_couleur` varchar(20) NOT NULL,
   `tim_ville` varchar(30) NOT NULL,
   `tim_pays` varchar(30) NOT NULL,
-  `tim_dateCreation` DATE NOT NULL,
+  `tim_dateCreation` YEAR NOT NULL,
   `tim_description` TEXT NOT NULL,
   `tim_dimensions` varchar(30) NOT NULL,
   `tim_condition` varchar(25) NOT NULL,
