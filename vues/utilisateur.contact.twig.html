@@ -1,0 +1,25 @@
+{% extends "base.twig.html" %}
+{% block main %}
+
+<h1>Contacter l'administration du site</h1>
+<section>
+    <form class="newsletter" method="post" action="utilisateur/contacter">
+        <div class="champs">
+            <label for="uti_nom">Nom</label>
+            <input type="text" class="champ" name="uti_nom" id="msg_uti_id_ce" value="{{user.uti_nom}}">
+        </div>
+        <div class="champs">
+            <label for="msg_uti_id_ce">Courriel</label>
+            <input type="email" class="champ" name="msg_uti_id_ce" id="msg_uti_id_ce" value="{{user.uti_courriel}}">
+        </div>
+        <div class="champs">
+            <label for="msg_sujet">Sujet: </label>
+            <input type="text" class="champ" name="msg_sujet" placeholder="Sujet du message">
+        </div><br>
+        <label for="msg_contenu">Votre texte: </label><br>
+        <textarea name="msg_contenu" cols="90" rows="10"></textarea>
+        <input class="newsletter__form__submit" type="submit" value="Envoyer">
+    </form>
+</section>
+
+{% endblock %}

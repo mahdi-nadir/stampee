@@ -25,6 +25,11 @@ class UtilisateurControleur extends Controleur
 
     }
 
+    public function contact()
+    {
+        $this->gabarit->affecter('user', $this->modele->un($_SESSION['utilisateur']->uti_courriel));
+    }
+
     public function ajouter()
     {
         $this->modele->ajouter( $_POST );
@@ -59,5 +64,19 @@ class UtilisateurControleur extends Controleur
     {
         unset($_SESSION['utilisateur']);
         Utilitaire::nouvelleRoute('accueil/index');
+    }
+
+    public function contacter()
+    {
+        $this->modele->contacter($_POST['msg_sujet'], $_POST['msg_contenu'], $_SESSION['utilisateur']->uti_id);
+
+        echo "<script>alert('Votre message a été envoyé avec succès!')</script>";
+        $to = "mehdinip@gmail.com";
+        $subject = $_POST['msg_sujet'];
+        $message = $_POST['msg_contenu'];
+        $headers = "From: " . $_SESSION['utilisateur']->uti_courriel . "\r\n" . "Content-type: text/html; charset=utf-8" . "\r\n";
+        mail($to, $subject, $message, $headers);
+        
+        Utilitaire::nouvelleRoute('enchere/tout');
     }
 }

@@ -84,7 +84,12 @@ class EnchereControleur extends Controleur
     {
         $this->gabarit->affecter('ench', $this->modele->un($params[0]));
     }
-
+    
+    /**
+     * favoris: affiche la liste des enchères favoris d'un utilisateur
+     *
+     * @return void
+     */
     public function favoris()
     {
         $this->gabarit->affecter('favoris', $this->modele->getAllFavoris($_SESSION['utilisateur']->uti_id));

@@ -61,7 +61,18 @@ CREATE TABLE `utilisateur` (
   FOREIGN KEY (`uti_rol_id_ce`) REFERENCES `role` (`rol_id`)
 ) ;
 
+-- --------------------------------------------------------
+--
+-- Structure de la table `message`
+--
 
+CREATE TABLE `message` (
+  `msg_id` int(6) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `msg_sujet` varchar(100) NOT NULL,
+  `msg_contneu` TEXT(1500) NOT NULL,
+  `msg_uti_id_ce` int(6) NOT NULL,
+  FOREIGN KEY (`msg_uti_id_ce`) REFERENCES `utilisateur` (`uti_id`)
+) ;
 
 -- --------------------------------------------------------
 --

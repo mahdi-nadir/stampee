@@ -27,4 +27,14 @@ class UtilisateurModele extends AccesBd
                                 "uti_pays"      => $uti_pays
                             ]);
     }
+
+    public function contacter($suj, $msg, $utilisateur)
+    {
+        $this->creer("  INSERT INTO `message` 
+                        VALUES (0, :msg_sujet, :msg_contenu, $utilisateur)", 
+                            [
+                                "msg_sujet"     => $suj, 
+                                "msg_contenu"     => $msg
+                            ]);
+    }
 }
