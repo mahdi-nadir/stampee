@@ -32,7 +32,21 @@ USE `stampee`;
   `rol_nom` varchar(8) NOT NULL PRIMARY KEY DEFAULT 'user'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci; */
 -- --------------------------------------------------------
+--
+-- Structure de la table `role`
+--
 
+CREATE TABLE `role` (
+  `rol_id` int(6) PRIMARY KEY AUTO_INCREMENT,
+  `rol_statut` VARCHAR(30) NOT NULL
+);
+
+INSERT INTO `role` (`rol_id`, `rol_statut`) VALUES
+(1, 'admin'),
+(2, 'user'),
+(3, 'visitor');
+
+-- --------------------------------------------------------
 --
 -- Structure de la table `utilisateur`
 --
@@ -43,8 +57,8 @@ CREATE TABLE `utilisateur` (
   `uti_courriel` varchar(75) UNIQUE NOT NULL,
   `uti_mdp` varchar(200) NOT NULL,
   `uti_pays` varchar(25),
-  `uti_role` varchar(25) NOT NULL DEFAULT 'user'
-  /* FOREIGN KEY (`uti_pri_rol_ce`) REFERENCES `privilege` (`rol_nom`) */
+  `uti_rol_id_ce` int(6) NOT NULL DEFAULT '2',
+  FOREIGN KEY (`uti_rol_id_ce`) REFERENCES `role` (`rol_id`)
 ) ;
 
 
@@ -72,13 +86,26 @@ CREATE TABLE `enchere` (
 
 CREATE TABLE `mise` (
   `mis_id` tinyint(6) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `mis_montant` int(10) NOT NULL,
   `mis_enc_id_ce` int(6) NOT NULL,
   FOREIGN KEY (`mis_enc_id_ce`) REFERENCES `enchere`(`enc_id`),
   `mis_uti_id_ce` int(6) NOT NULL,
   FOREIGN KEY (`mis_uti_id_ce`) REFERENCES `utilisateur`(`uti_id`)
 ) ;
 
+-- --------------------------------------------------------
 
+--
+-- Structure de la table `favoris`
+--
+
+CREATE TABLE `favoris` (
+  `fav_id` tinyint(6) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `fav_enc_id_ce` int(6) NOT NULL,
+  FOREIGN KEY (`fav_enc_id_ce`) REFERENCES `enchere`(`enc_id`),
+  `fav_uti_id_ce` int(6) NOT NULL,
+  FOREIGN KEY (`fav_uti_id_ce`) REFERENCES `utilisateur`(`uti_id`)
+) ;
 -- --------------------------------------------------------
 --
 -- Structure de la table `timbre`

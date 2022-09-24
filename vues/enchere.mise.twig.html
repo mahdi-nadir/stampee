@@ -1,11 +1,12 @@
 {% extends "base.twig.html" %}
 
 {% block main %}
-        <h1 class="firstTitle">Placer une mise pour cette enchère {{enchere.enc_id}}</h1>
-        
-        <form method="post" action="enchere/miser">
-            <input type="hidden" name="enc_id" value="{{mises.enc_id}}">
-            <input type="text" name="mise" placeholder="Dernière mise: {{mises.mis_depose}}">
-            <input type="submit" value="Déposer la mise">
-        </form>
-        {% endblock %}
+    <h1 class="firstTitle">Placer une mise pour cette enchère {{enchere.enc_id}}</h1>
+    
+    <form method="post" action="enchere/addMise" class="newsletter">
+        <input type="hidden" name="enc_id" value="{{mises.enc_id}}">
+        <input type="hidden" name="mis_montant" value="{{mises.mis_montant}}">
+        <input type="text" name="mise" placeholder="Mettez plus que la dernière mise: {{enchere.enc_prixActuel}} £" class="champ">
+        <input type="submit" value="Déposer la mise" class="newsletter__form__submit">
+    </form>
+{% endblock %}

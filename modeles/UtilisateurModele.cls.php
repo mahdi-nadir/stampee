@@ -4,6 +4,10 @@ class UtilisateurModele extends AccesBd
     /**
      * 
      */
+    public function tout() {
+        return $this->lireTout('SELECT * FROM utilisateur');
+    }
+
     public function un($courriel)
     {
         return $this->lireUn("SELECT * FROM utilisateur 

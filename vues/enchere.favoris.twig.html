@@ -1,0 +1,22 @@
+{% extends "base.twig.html" %}
+
+{% block main %}
+
+<h1>Vos enchères favorites</h1>
+        
+
+            <section class="catalogue1__principal">
+                {% for favori in favoris %}
+                <article class="catalogue1__principal__timbre">
+                    <img class="catalogue1__principal__timbre__img" src="ressources/css/accueil/immg/{{favori.img_path}}" alt="{{favori.img_path}}">
+                    <h2 class="catalogue1__principal__timbre__titre">{{favori.tim_nom}}</h2>
+                    <p class="catalogue1__principal__timbre__presentation">
+                        {{favori.tim_description}}
+                    </p>
+                    <a href="enchere/detail/{{favori.enc_id}}" class="lienTimbre">voir la fiche</a>
+                </article>
+                {% endfor %}
+                
+            </section>
+        
+        {% endblock %}

@@ -34,7 +34,7 @@
     </div>
     <div>
         <label for="tim_dateCreation">Date de création du timbre </label>
-        <input type="date" name="tim_dateCreation" class="champ" required>
+        <input type="year" name="tim_dateCreation" class="champ" placeholder="YYYY" required>
     </div>
     
     <label for="tim_dimensions">Dimensions du timbre: </label>
@@ -50,7 +50,7 @@
         <option value="occasion">Occasion</option>
     </select><br>
     
-    <input type="radio" name="tim_certification" value="1"> Certifié
+    <input type="radio" name="tim_certification" value="1" checked> Certifié
     <input type="radio" name="tim_certification" value="0"> Non certifié <br>
 
     <div>
@@ -62,8 +62,8 @@
         <input type="date" name="enc_dateFin" class="champ" required>
     </div>
     <div>
-        <label for="enc_prixDepart">Prix estimé: </label>
-        <input type="text" name="enc_prixDepart" class="champ" required>
+        <label for="enc_prixDepart">Valeur de départ: </label>
+        <input type="text" name="enc_prixDepart" class="champ" placeholder="£" required>
     </div>
     
     <div>
