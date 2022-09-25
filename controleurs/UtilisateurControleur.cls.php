@@ -70,8 +70,8 @@ class UtilisateurControleur extends Controleur
     {
         $this->modele->contacter($_POST['msg_sujet'], $_POST['msg_contenu'], $_SESSION['utilisateur']->uti_id);
 
-        echo "<script>alert('Votre message a été envoyé avec succès!')</script>";
-        $to = "mehdinip@gmail.com";
+        // echo "<script>alert('ok')</script>";
+        $to = "testmaisonneuve@gmail.com";
         $subject = $_POST['msg_sujet'];
         $message = $_POST['msg_contenu'];
         $headers = "From: " . $_SESSION['utilisateur']->uti_courriel . "\r\n" . "Content-type: text/html; charset=utf-8" . "\r\n";
