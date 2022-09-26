@@ -18,8 +18,9 @@
         </div>
     </form>
 </section>
-
-
-
-
+<div>
+{% if erreur %}
+    <p class="erreur">{{ erreur }}</p>
+{% endif %}
+</div>
 {% endblock %}

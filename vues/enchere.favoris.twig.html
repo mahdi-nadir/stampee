@@ -6,6 +6,7 @@
         
 
             <section class="catalogue1__principal">
+                {%if favoris%}
                 {% for favori in favoris %}
                 <article class="catalogue1__principal__timbre">
                     <img class="catalogue1__principal__timbre__img" src="ressources/css/accueil/immg/{{favori.img_path}}" alt="{{favori.img_path}}">
@@ -16,6 +17,9 @@
                     <a href="enchere/detail/{{favori.enc_id}}" class="lienTimbre">voir la fiche</a>
                 </article>
                 {% endfor %}
+                {% else %}
+                <p>Vous n'avez pas encore de favoris</p>
+                {% endif %}
                 
             </section>
         

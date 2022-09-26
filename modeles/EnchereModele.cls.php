@@ -3,8 +3,10 @@ class EnchereModele extends AccesBd
 {
 
 /**
+ * **********************************************************************
  * ***** AFFICHAGE ET GESTION DES ENCHERES *****
- */
+ * **********************************************************************
+ */ 
 
 
 
@@ -17,8 +19,8 @@ class EnchereModele extends AccesBd
     {
         return $this->lireTout('SELECT * 
                                 FROM enchere
-                                JOIN mise
-                                ON enc_id = mis_enc_id_ce
+                                /* JOIN mise
+                                ON enc_id = mis_enc_id_ce */
                                 JOIN timbre 
                                 ON enc_id = tim_enc_id_ce
                                 JOIN `image`
@@ -37,8 +39,10 @@ class EnchereModele extends AccesBd
     {
         return $this->lireUn("  SELECT *
                                 FROM enchere
-                                JOIN mise
-                                ON enc_id = mis_enc_id_ce
+                                JOIN utilisateur
+                                ON enc_uti_id_ce = uti_id
+                                /* JOIN mise
+                                ON enc_id = mis_enc_id_ce */
                                 JOIN timbre 
                                 ON enc_id = tim_enc_id_ce
                                 JOIN `image`
@@ -156,7 +160,9 @@ class EnchereModele extends AccesBd
                     }
 
 /**
- * ***** AFFICHAGE ET GESTION DES MISES *****
+ * ***********************************************************************
+ * ****** AFFICHAGE ET GESTION DES MISES *****
+ * ***********************************************************************
  */
 
 
@@ -168,13 +174,14 @@ class EnchereModele extends AccesBd
      */
     public function mise($encId)
     {
-        return $this->lireUn("      SELECT *
+        return $this->lireTout("    SELECT *, TIME(mis_date) AS heure
                                     FROM mise
                                     JOIN enchere
                                     ON enc_id = mis_enc_id_ce
                                     JOIN utilisateur
                                     ON mis_uti_id_ce = uti_id
-                                    WHERE enc_id = $encId");
+                                    WHERE enc_id  = $encId
+                                    ORDER BY mis_date ASC");
     }
 
     
@@ -188,8 +195,8 @@ class EnchereModele extends AccesBd
      */
     public function addMise($encid, $montant, $utiid) {
 
-            $this->creer(   "INSERT INTO mise (mis_montant, mis_enc_id_ce, mis_uti_id_ce)
-                            VALUES (:mis_montant, :mis_enc_id_ce, $utiid)",
+            $this->creer(   "INSERT INTO mise (mis_montant, mis_date, mis_enc_id_ce, mis_uti_id_ce)
+                            VALUES (:mis_montant, NOW(), :mis_enc_id_ce, $utiid)",
                             array(
                                 ':mis_montant' => $montant,
                                 ':mis_enc_id_ce' => $encid
@@ -206,7 +213,9 @@ class EnchereModele extends AccesBd
 
 
 /**
+ * **********************************************************************
  * ***** AFFICHAGE ET GESTION DES FAVORIS *****
+ * **********************************************************************
  */
     
     /**
@@ -262,15 +271,6 @@ class EnchereModele extends AccesBd
                                 WHERE fav_uti_id_ce = $utiid
                                 ORDER BY enc_dateDebut DESC");
     }
-
-   /*  SELECT * 
-                                FROM enchere
-                                JOIN mise
-                                ON enc_id = mis_enc_id_ce
-                                JOIN timbre 
-                                ON enc_id = tim_enc_id_ce
-                                JOIN `image`
-                                ON img_tim_id_ce = tim_id */
 
     /**
      * getFavori: selectionne l'enchère favorite d'un utilisateur

@@ -4,34 +4,40 @@
 {% block main %}
 
 <h1>s'inscrire</h1>
-<form action="utilisateur/ajouter" method="post" class="newsletter">
+<form action="utilisateur/ajouter" name="formNv" method="post" class="newsletter" id="formNv">
     <div>
         <label for="uti_nom">Nom: </label>
-        <input type="text" name="uti_nom" id="nom" class="champ" required>
+        <input type="text" name="uti_nom" id="nomNv" class="champ"> <small id="errNom"></small>
     </div>
     
     <div>
         <label for="uti_pays">Pays: </label>
-        <input type="text" name="uti_pays" class="champ" id="pays" required>
+        <input type="text" name="uti_pays" class="champ" id="paysNv"> <small id="errPays"></small>
     </div>
     
     <div>
         <label for="uti_courriel">Courriel: </label>
-        <input type="email" name="uti_courriel" class="champ" required>
+        <input type="email" name="uti_courriel" class="champ" id="courrielNv"> <small id="errCourriel"></small>
     </div>
 
     
     <div>
         <label for="uti_mdp">Mot de passe: </label>
-        <input type="password" name="uti_mdp" class="champ" required>
+        <input type="password" name="uti_mdp" class="champ" id="mdpNv"> <small id="errMdp"></small>
     </div>
 
     <div>
-        <input class="newsletter__form__submit" type="submit" value="Inscription">
+        <label for="uti_mdp2">Confirmation du mot de passe: </label>
+        <input type="password" class="champ" id="mdpNv2" name="uti_mdp2"> <small id="errMdp2"></small>
+    </div>
+
+    <div>
+        <input class="newsletter__form__submit" type="submit" name="submitNv" id="submitNv" value="Inscription">
     </div>
     <div class="lien">
         <a href="utilisateur/connect">Vous avez un compte? connectez-vous!</a>
     </div>
 </form>
+
 
 {% endblock %}

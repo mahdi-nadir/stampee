@@ -2,6 +2,7 @@
 
 {% block main %}
         <h1 class="firstTitle">Fiche du Timbre {{enchere.tim_id}}</h1>
+        <h2>Mise en ligne par {{enchere.uti_nom}}</h2>
         
         <main class="infos">
             <section class="images">
@@ -68,15 +69,29 @@
                             <button>Ajouter aux favoris</button>
                         </form>
                         {% endif %}
-                        
-                        <button>voir historique des mises</button>
+                        <form method="post" class="convertPrint" action="enchere/listemises">
+                            <input type="hidden" name="enc_id" value="{{enchere.enc_id}}">
+                            <button>voir historique des mises</button>
+                        </form>
+                        <!-- <a href="enchere/listemises">voir historique des mises</a> -->
                         {% endif %}
                     </div>
+                    
                     <h3 class="enchereTitres">Dernière mise:</h3>
                     <h1 class="prixRecent">{{enchere.enc_prixActuel}} £</h1>
                     <a href="enchere/mise/{{enchere.enc_id}}">
                         <input type="hidden" value="{{enchere.enc_id}}">
+                        {% if session.utilisateur %}
+                        
+                        {% if enchere.enc_uti_id_ce != session.utilisateur.uti_id %}
                         <button class="mise">placer une mise</button>
+                        {% else %}
+                        <a><button class="mise">Vous ne pouvez pas miser sur votre propre enchère</button></a>
+                        {% endif %}
+                        {% endif %}
+                        {% if not session.utilisateur %}
+                        <a href="utilisateur/connect"><button class="mise" >Vous voulez miser? Connectez-vous!</button></a>
+                        {% endif %}
                     </a>
                     <h3 class="enchereTitres">Valeur de début:</h3>
                     <h3 class="prixEstime">{{ enchere.enc_prixDepart }} £</h3>

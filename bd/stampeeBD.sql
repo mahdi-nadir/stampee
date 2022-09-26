@@ -98,6 +98,7 @@ CREATE TABLE `enchere` (
 CREATE TABLE `mise` (
   `mis_id` tinyint(6) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `mis_montant` int(10) NOT NULL,
+  `mis_date` TIMESTAMP NOT NULL,
   `mis_enc_id_ce` int(6) NOT NULL,
   FOREIGN KEY (`mis_enc_id_ce`) REFERENCES `enchere`(`enc_id`),
   `mis_uti_id_ce` int(6) NOT NULL,
