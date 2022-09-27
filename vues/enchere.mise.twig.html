@@ -3,11 +3,12 @@
 {% block main %}
     <h1 class="firstTitle">Placer une mise pour cette enchère {{enchere.enc_id}}</h1>
     
-    <form method="post" action="enchere/addMise" class="newsletter">
+    <form method="post" action="enchere/addMise" class="newsletter" name="formNv" id="formNv">
         <input type="hidden" name="enc_id" value="{{enchere.enc_id}}">
-        <input type="hidden" name="mis_montant" value="{{enchere.enc_prixActuel}}">
-        <input type="text" name="mise" placeholder="Mettez plus que la dernière mise: {{enchere.enc_prixActuel}} £" class="champ">
-        <input type="submit" value="Déposer la mise" class="newsletter__form__submit">
+        <input type="hidden" name="mis_montant" value="{{enchere.enc_prixActuel}}" id="ancienneEnchere">
+        <input type="text" name="mise" id="nouvelleEnchere" placeholder="Mettez plus que la dernière mise: {{enchere.enc_prixActuel}} £" class="champ">
+        <small id="errEnchere"></small>
+        <input type="submit" id="submitNv" value="Déposer la mise" class="newsletter__form__submit">
     </form>
     
 {% endblock %}
