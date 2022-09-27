@@ -84,22 +84,23 @@
                         {% if session.utilisateur %}
                         
                         {% if enchere.enc_uti_id_ce != session.utilisateur.uti_id %}
-                        <button class="mise">placer une mise</button>
+                        <button class="mise" id="placerMise">placer une mise</button>
                         {% else %}
-                        <a><button class="mise">Vous ne pouvez pas miser sur votre propre enchère</button></a>
+                        <a><button class="mise" id="placerrrMise">Vous ne pouvez pas miser sur votre propre enchère</button></a>
                         {% endif %}
                         {% endif %}
                         {% if not session.utilisateur %}
-                        <a href="utilisateur/connect"><button class="mise" >Vous voulez miser? Connectez-vous!</button></a>
+                        <a href="utilisateur/connect"><button class="mise" id="placerrMise">Vous voulez miser? Connectez-vous!</button></a>
                         {% endif %}
                     </a>
                     <h3 class="enchereTitres">Valeur de début:</h3>
                     <h3 class="prixEstime">{{ enchere.enc_prixDepart }} £</h3>
                     <hr class="separateur">
                     <h3 class="enchereTitres fin">Fin de l'enchère à:</h3>
-                        <span class="time">{{ enchere.enc_dateFin }}</span> <span class="time">23:59</span>
+                        <span class="time" id="enchereDateFin">{{ enchere.enc_dateFin }}</span> <span class="time">00:00</span>
                         <!-- <span class="time">13m</span> -->
-                        <span class="timeSpan"><i>Greenwich Mean Time (GMT)</i></span>
+                        <span class="timeSpan"><i>Greenwich Mean Time (GMT)</i></span><br><br>
+                        <span>il reste:</span> <span class="time" id="day"></span> jour(s) <span class="time" id="hour"></span> heure(s) <span class="time" id="minute"></span> minute(s) <span class="time" id="second"></span> seconde(e)
                     <hr class="separateur">
                     <div class="convertPrint">
                         <button>convertisseur de devises</button>
