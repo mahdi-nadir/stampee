@@ -50,7 +50,6 @@ class EnchereControleur extends Controleur
         if (isset($_SESSION['utilisateur'])) {
             $this->gabarit->affecter('favori', $this->modele->getFavori($params[0], $_SESSION['utilisateur']->uti_id));
         }
-        // $this->gabarit->affecter('favori', $this->modele->getFavori($params[0], $_SESSION['utilisateur']->uti_id));
     }
 
         

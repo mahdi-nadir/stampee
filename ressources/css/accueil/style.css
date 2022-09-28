@@ -744,7 +744,20 @@ p {
     display: none;
 }
 
+.listeMises {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+}
 
+.imgListe {
+    width: 300px;
+}
+
+.secListe {
+    background-color: red !important;
+}
 
 /* MEDIA QUERIES *******************************/
 @media screen and (max-width: 1290px) {

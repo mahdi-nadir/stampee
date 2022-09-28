@@ -51,15 +51,15 @@
             
             document.querySelector('#tiimer').remove();
             
-            if (document.getElementById('enchereGagnant')) {
+            // if (document.getElementById('enchereGagnant')) {
                 document.getElementById('enchereGagnant').classList.add('hidden');
-            }
-            if (document.getElementById('encherreGagnant')) {
+            // }
+            // if (document.getElementById('encherreGagnant')) {
                 document.getElementById('encherreGagnant').classList.add('hidden');
-            }
-            if (document.getElementById('encherrreGagnant')) {
-                document.getElementById('encherrreGagnant').classList.add('hidden')
-            }
+            // }
+            // if (document.getElementById('encherrreGagnant')) {
+                document.getElementById('encherrreGagnant').classList.add('hidden');
+            // }
         } else {
             if (document.getElementById('placerMise')) {
                 document.querySelector('.msgGagnant').innerText = "Jusque là, l'enchère est remportée par ";

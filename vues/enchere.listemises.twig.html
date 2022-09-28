@@ -4,13 +4,13 @@
         <h1 class="firstTitle">Liste des mises sur le Timbre {{enchere.tim_id}}</h1>
         <h2>Mise en ligne par {{enchere.uti_nom}}</h2>
         
-        <main class="infos">
-            <div class="newsletter">
-                <!-- <section class="images">
-                    <img src="ressources/css/accueil/immg/{{enchere.img_path}}" alt="{{enchere.img_path}}" title="{{enchere.img_path}}">
-                </section> -->
+        <main class="infos listeMises">
+            <div class="newsletter ">
+                <section class="images">
+                    <img class="imgListe" src="ressources/css/accueil/immg/{{enchere.img_path}}" alt="{{enchere.img_path}}" title="{{enchere.img_path}}">
+                </section>
 
-                <section>
+                <section class="secListe">
                     {% for mise in mises %}
                         <li>La mise #{{mise.mis_id}}, déposée par {{mise.uti_nom}} le {{mise.mis_date}}, contient un montant de {{mise.mis_montant}}</li>
                     {% endfor%}
