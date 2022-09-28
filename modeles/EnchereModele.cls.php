@@ -181,7 +181,18 @@ class EnchereModele extends AccesBd
                                     JOIN utilisateur
                                     ON mis_uti_id_ce = uti_id
                                     WHERE enc_id  = $encId
-                                    ORDER BY mis_date ASC");
+                                    ORDER BY mis_date DESC");
+    }
+
+    public function enchGagnant($encId)
+    {
+        return $this->lireUn("  SELECT *, MAX(mis_montant)
+                                FROM mise
+                                JOIN utilisateur
+                                ON mis_uti_id_ce = uti_id 
+                                WHERE mis_enc_id_ce  = $encId
+        
+                            ");
     }
 
     

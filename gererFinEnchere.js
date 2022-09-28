@@ -1,11 +1,18 @@
 (function() {
+    let timer = {
+        D: document.getElementById('day'),
+        H: document.getElementById('hour'),
+        M: document.getElementById('minute'),
+        S: document.getElementById('second')
+    }
+    
+
     function countDown() {
+        if (timer.D) {
         let enchereDate = document.getElementById('enchereDateFin').innerText;
         let goalDate = new Date(enchereDate).getTime();
         let now = new Date().getTime();
-        //console.log(goalDate);
         const gap = goalDate - now
-        // console.log(gap);
 
         let seconde = 1000;
         let minute = seconde * 60;
@@ -16,22 +23,58 @@
         let textDay = Math.floor(gap / jour);
         let textHour = Math.floor((gap%jour) / heure);
         let textMinute = Math.floor((gap%heure) / minute);
-        let textSeconde = Math.floor((gap%minute) / seconde);
-        //console.log(textDay, textHour, textMinute, textSeconde);
+        let textSecond = Math.floor((gap%minute) / seconde);
+        //console.log(textDay, textHour, textMinute, textSecond);
 
-        document.getElementById('day').innerHTML = textDay;
-        document.getElementById('hour').innerHTML = textHour;
-        document.getElementById('minute').innerHTML = textMinute;
-        document.getElementById('second').innerHTML = textSeconde;
+        timer.D.innerHTML = textDay;
+        timer.H.innerHTML = textHour;
+        timer.M.innerHTML = textMinute;
+        timer.S.innerHTML = textSecond;
 
         
+        if (timer.D.innerHTML <= 0 && timer.H.innerHTML <= 0 && timer.M.innerHTML <= 0 && timer.S.innerHTML <= 0 ) {
+            if (document.getElementById('placerMise')) {
+                document.getElementById('placerMise').innerHTML = "L'enchère est expirée";
+                document.querySelector('.msgGagnant').innerText = "L'enchère a été remportée par ";
+                document.querySelector('.versMise').setAttribute('href', 'enchere/tout');
+            }
+            if (document.getElementById('placerrMise')) {
+                document.getElementById('placerrMise').innerHTML = "L'enchère est expirée";
+                document.querySelector('.msgGagnant').innerText = "L'enchère a été remportée par ";
+                document.querySelector('.versMise').setAttribute('href', 'enchere/tout');
+            }
+            if (document.getElementById('placerrrMise')) {
+                document.getElementById('placerrrMise').innerHTML = "L'enchère est expirée";
+                document.querySelector('.msgGagnant').innerText = "L'enchère a été remportée par ";
+                document.querySelector('.versMise').setAttribute('href', 'enchere/tout');
+            }
+            
+            document.querySelector('#tiimer').remove();
+            
+            if (document.getElementById('enchereGagnant')) {
+                document.getElementById('enchereGagnant').classList.add('hidden');
+            }
+            if (document.getElementById('encherreGagnant')) {
+                document.getElementById('encherreGagnant').classList.add('hidden');
+            }
+            if (document.getElementById('encherrreGagnant')) {
+                document.getElementById('encherrreGagnant').classList.add('hidden')
+            }
+        } else {
+            if (document.getElementById('placerMise')) {
+                document.querySelector('.msgGagnant').innerText = "Jusque là, l'enchère est remportée par ";
+            }
+            if (document.getElementById('placerrMise')) {
+                document.querySelector('.msgGagnant').innerText = "Jusque là, l'enchère est remportée par ";
+            }
+            if (document.getElementById('placerrrMise')) {
+                document.querySelector('.msgGagnant').innerText = "Jusque là, l'enchère est remportée par ";
+            }
+        }
+    }
     }
 
     setInterval(countDown, 1000);
 
-    /* if (textDay == 0 && textHour == 0 && textMinute == 0 && textSeconde == 0) {
-        document.getElementById('placerMise').innerHTML = "L'enchère est expirée";
-        document.getElementById('placerMise').disabled = true;
-    } */
 })()
 

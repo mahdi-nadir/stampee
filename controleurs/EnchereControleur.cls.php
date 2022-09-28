@@ -25,7 +25,6 @@ class EnchereControleur extends Controleur
     {
         $this->gabarit->affecterActionParDefaut('tout');
         $this->tout();
-
     }
     
     /**
@@ -47,6 +46,7 @@ class EnchereControleur extends Controleur
     public function detail($params)
     {
         $this->gabarit->affecter('enchere', $this->modele->un($params[0]));
+        $this->gabarit->affecter('enchGagnant', $this->modele->enchGagnant($params[0]));
         if (isset($_SESSION['utilisateur'])) {
             $this->gabarit->affecter('favori', $this->modele->getFavori($params[0], $_SESSION['utilisateur']->uti_id));
         }
@@ -177,14 +177,9 @@ class EnchereControleur extends Controleur
      * @return void
      */
     public function addMise() {
-        if ($_POST['mis_montant'] > $_POST['mise']) {
-            $erreur = "Le montant de la mise doit être supérieur à la mise actuelle";
-            Utilitaire::nouvelleRoute('enchere/mise/'.$_POST['enc_id']);
-        } else {
-            $this->modele->addMise($_POST['enc_id'], $_POST['mise'], $_SESSION['utilisateur']->uti_id);
-            Utilitaire::nouvelleRoute('enchere/tout');
-        }
-    }
+        $this->modele->addMise($_POST['enc_id'], $_POST['mise'], $_SESSION['utilisateur']->uti_id);
+        Utilitaire::nouvelleRoute('enchere/tout');
+}
 
 
     /**

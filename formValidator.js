@@ -273,7 +273,7 @@
 
     function validerDescription() {
         messageErr = "";
-        regExp = /[a-zA-Z0-9 ]{10,300}/i;
+        regExp = /[a-zA-Z0-9 ]{10,1000}/i;
         valeur = document.getElementById('descriptionNv').value;
         if (valeur == "") {
             messageErr = 'Veuillez insérer du texte!';
