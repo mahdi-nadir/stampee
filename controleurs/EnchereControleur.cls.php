@@ -123,7 +123,7 @@ class EnchereControleur extends Controleur
      * @return void
      */
     public function ajouter() {
-        if (isset($_POST['submit'])) {
+        if (isset($_POST['submitNv'])) {
             $name = $_FILES['image']['name'];
             $fichier = $_FILES['image']['tmp_name'];
     
@@ -156,7 +156,7 @@ class EnchereControleur extends Controleur
      * @return void
      */
     public function changer() {
-        if (isset($_POST['submit'])) {
+        if (isset($_POST['submitNv'])) {
             $name = $_FILES['image']['name'];
             $fichier = $_FILES['image']['tmp_name'];
     

@@ -5,12 +5,13 @@
 }
 
 body {
-    background-image: url(/assets/img/bgc2.jpg);
+    /* background-image: url(/assets/img/bgc2.jpg);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover; */
     font-family: 'Kdam Thmor Pro', sans-serif;
     background-color: white;
     color: black;
+    min-height: 100vh;
 }
 
 /* .dark-mode {
@@ -744,6 +745,12 @@ p {
     display: none;
 }
 
+h2 {
+    font-size: 20pt;
+    text-align: center;
+    margin: auto;
+}
+
 .listeMises {
     display: flex;
     flex-flow: row wrap;
@@ -752,11 +759,12 @@ p {
 }
 
 .imgListe {
-    width: 300px;
+    width: 450px;
+    border-radius: 4px;
 }
 
 .secListe {
-    background-color: red !important;
+    font-size: clamp(10pt, 14pt, 18pt);
 }
 
 /* MEDIA QUERIES *******************************/
@@ -1107,27 +1115,27 @@ a:hover {
 }
 
 .consultes__timbres1, .consultes__timbres2 {
+    
     width: clamp(450px, 40vw, 50vw);
     height: 400px;
     border: 2px black solid;
     border-radius: 5px;
 }
 
+.consultes__timbres1 {
+    background-image: url('../accueil/img/consulte1.jpg');
+}
+
+.consultes__timbres2 {
+    background-image: url('../accueil/img/consulte2.jpg');
+}
+
 .consultes__timbres1, .consultes__timbres2 {
-    background-image: url(ressources/css/accueil/img/consulte1.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     display: flex;
     flex-direction: column;
     justify-content: end;
-}
-
-.consultes__timbres1 {
-    background-image: url(ressources/css/accueil/img/consulte1.jpg);
-}
-
-.consultes__timbres2 {
-    background-image: url(ressources/css/accueil/img/consulte2.jpg);
 }
 
 .consultes__timbres__details {
@@ -1209,27 +1217,33 @@ hr {
     margin-top: 50px;
 }
 
+.catalogue__aside__localisation__petit {
+    margin-left: 20px;
+}
+
 .catalogue1__principal{
-    max-width: 80%;
+    width: 80%;
     padding-right: 30px;
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
     align-items: center;
-    gap: 6rem 5rem;
-    padding-top: 30px;
+    gap: 3rem 5rem;
+    /* padding-top: 30px; */
 }
 
 .catalogue1__principal__timbre {
     display: flex;
     justify-content: space-evenly;
     flex-direction: column;
-    max-width: 100%;
+    /* max-width: 100%; */
     border: 2px black solid;
     border-radius: 5px;
-    max-width: 350px;
+    width: 350px;
+    height: 450px;
     text-align: center;
     background-color: #fff;
+    margin-top: 40px;
 }
 
 .catalogue1__aside__localisation__petit, .vente__petit {
@@ -1326,7 +1340,13 @@ hr {
     height: 30%;
     background-color: #022f53;
     margin-top: 50px;
+    position: sticky;
+    top: 100%;
 }
+
+/* .footer {
+    
+} */
 
 .footer__infos {
     display: flex;
@@ -1343,8 +1363,14 @@ hr {
     padding: 10px 0;
     cursor: pointer;
 }
+.footer__infos__listOne {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    text-align: center;
+}
 
-.footer__infos__listOne, .footer__infos__listTwo, .footer__follow {
+.footer__infos__listTwo, .footer__follow {
     display: flex;
     flex-direction: column;
     gap: 10px;

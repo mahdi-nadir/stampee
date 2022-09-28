@@ -3,23 +3,24 @@
 {% block main %}
 
 <h1>Vos enchères favorites</h1>
-        
+{% if not favoris %}
+<h2>Vous n'avez pas encore de favoris</h2>
+{% endif %}
 
             <section class="catalogue1__principal">
-                {%if favoris%}
-                {% for favori in favoris %}
+                
+                {% for favor in favoris %}
                 <article class="catalogue1__principal__timbre">
-                    <img class="catalogue1__principal__timbre__img" src="ressources/css/accueil/immg/{{favori.img_path}}" alt="{{favori.img_path}}">
-                    <h2 class="catalogue1__principal__timbre__titre">{{favori.tim_nom}}</h2>
+                    <img class="catalogue1__principal__timbre__img" src="ressources/css/accueil/immg/{{favor.img_path}}" alt="{{favor.img_path}}">
+                    <h2 class="catalogue1__principal__timbre__titre">{{favor.tim_nom}}</h2>
                     <p class="catalogue1__principal__timbre__presentation">
-                        {{favori.tim_description}}
+                        {{favor.tim_description}}
                     </p>
-                    <a href="enchere/detail/{{favori.enc_id}}" class="lienTimbre">voir la fiche</a>
+                    <a href="enchere/detail/{{favor.enc_id}}" class="lienTimbre">voir la fiche</a>
                 </article>
                 {% endfor %}
-                {% else %}
-                <p>Vous n'avez pas encore de favoris</p>
-                {% endif %}
+                
+                
                 
             </section>
         

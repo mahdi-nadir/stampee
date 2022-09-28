@@ -85,18 +85,18 @@ class EnchereModele extends AccesBd
                 'tim_certification' => $tim_certification
             ]);
 
-            $imgId = $this->creer("INSERT INTO `image` 
+            $this->creer("INSERT INTO `image` 
             VALUES (0, :img_path, $timId)",
             [
                 'img_path' => $name
             ]);
             
-            //creation de foreach pour ajouter les utilisateurs dans toutes les mises
-            $this->creer("INSERT INTO mise
-            VALUES (0, :enc_prixDepart+1, $encId, $utiId);", // creer plusieurs utilisateurs pour une seule enchere dans la table mise, et ce pour eviter de creer de nouvelles rangées dans la table mise pour chaque utilisateur qui participe a l'enchere
+            
+            /* $this->creer("INSERT INTO mise
+            VALUES (0, :enc_prixDepart+1, $encId, $utiId);", 
             [
                 'enc_prixDepart' => $enc_prixDepart
-            ]);
+            ]); */
     }
 
     
@@ -181,7 +181,7 @@ class EnchereModele extends AccesBd
                                     JOIN utilisateur
                                     ON mis_uti_id_ce = uti_id
                                     WHERE enc_id  = $encId
-                                    ORDER BY mis_date DESC");
+                                    ORDER BY mis_date ASC");
     }
 
     public function enchGagnant($encId)
@@ -271,16 +271,15 @@ class EnchereModele extends AccesBd
 
         return $this->lireTout("SELECT *
                                 FROM enchere
-                                JOIN mise
-                                ON enc_id = mis_enc_id_ce
+                                JOIN favoris
+                                ON fav_enc_id_ce = enc_id
                                 JOIN timbre 
                                 ON enc_id = tim_enc_id_ce
                                 JOIN `image`
                                 ON img_tim_id_ce = tim_id
-                                JOIN favoris
-                                ON fav_enc_id_ce = enc_id
                                 WHERE fav_uti_id_ce = $utiid
-                                ORDER BY enc_dateDebut DESC");
+                                GROUP BY fav_id
+                                ORDER BY enc_dateDebut");
     }
 
     /**
