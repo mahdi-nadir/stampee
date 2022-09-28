@@ -33,43 +33,27 @@
 
         
         if (timer.D.innerHTML <= 0 && timer.H.innerHTML <= 0 && timer.M.innerHTML <= 0 && timer.S.innerHTML <= 0 ) {
+            document.querySelector('#tiimer').remove();
             if (document.getElementById('placerMise')) {
                 document.getElementById('placerMise').innerHTML = "L'enchère est expirée";
                 document.querySelector('.msgGagnant').innerText = "L'enchère a été remportée par ";
-                document.querySelector('.versMise').setAttribute('href', 'enchere/tout');
+                document.querySelector('.versMise').setAttribute('href', 'enchere/tout');                
             }
-            if (document.getElementById('placerrMise')) {
-                document.getElementById('placerrMise').innerHTML = "L'enchère est expirée";
+            if (document.getElementById('placerMise2')) {
+                document.getElementById('placerMise2').innerHTML = "L'enchère est expirée";
                 document.querySelector('.msgGagnant').innerText = "L'enchère a été remportée par ";
                 document.querySelector('.versMise').setAttribute('href', 'enchere/tout');
             }
-            if (document.getElementById('placerrrMise')) {
-                document.getElementById('placerrrMise').innerHTML = "L'enchère est expirée";
+            if (document.getElementById('placerMise3')) {
+                document.getElementById('placerMise3').innerHTML = "L'enchère estt expirée";
                 document.querySelector('.msgGagnant').innerText = "L'enchère a été remportée par ";
                 document.querySelector('.versMise').setAttribute('href', 'enchere/tout');
             }
-            
-            document.querySelector('#tiimer').remove();
-            
-            // if (document.getElementById('enchereGagnant')) {
-                document.getElementById('enchereGagnant').classList.add('hidden');
-            // }
-            // if (document.getElementById('encherreGagnant')) {
-                document.getElementById('encherreGagnant').classList.add('hidden');
-            // }
-            // if (document.getElementById('encherrreGagnant')) {
-                document.getElementById('encherrreGagnant').classList.add('hidden');
-            // }
+
         } else {
-            if (document.getElementById('placerMise')) {
                 document.querySelector('.msgGagnant').innerText = "Jusque là, l'enchère est remportée par ";
-            }
-            if (document.getElementById('placerrMise')) {
                 document.querySelector('.msgGagnant').innerText = "Jusque là, l'enchère est remportée par ";
-            }
-            if (document.getElementById('placerrrMise')) {
                 document.querySelector('.msgGagnant').innerText = "Jusque là, l'enchère est remportée par ";
-            }
         }
     }
     }
