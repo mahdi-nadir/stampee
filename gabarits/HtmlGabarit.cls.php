@@ -34,6 +34,6 @@ class HtmlGabarit
         // include("vues/$this->module.$this->action.php");
         // include("vues/pied2page.inc.php");
 
-        $this->twig->display("$this->module.$this->action.twig.html", $this->variables);
+        $this->twig->display("/$this->module/$this->action.twig.html", $this->variables);
     }
 }
