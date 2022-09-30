@@ -1,0 +1,21 @@
+{% extends "base.twig.html" %}
+
+{% block main %}
+        <h1 class="firstTitle">Liste des messqges reçus</h1>
+        
+        <main class="infos">
+            <div class="newsletter listeMises">
+                <section>
+                    {%if messages%}
+                    {% for message in messages %}
+                        <li class="secListe">Message de {{message.msg_sender}}, reçu le {{message.msg_date}}:</li>
+                        <details>{{message.msg_contneu}}</details>
+
+                    {% endfor%}
+                    {%else%}
+                    <h1>Aucun message disponible!</h1>
+                    {%endif%}
+                </section>
+            </div>
+        </main>
+        {% endblock %}

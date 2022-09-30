@@ -3,34 +3,7 @@
 {% block main %}
 
 <h1>Résultats trouvés</h1>
-        <!-- <section class="tous">
-        <section class="consultes">
-            <article class="consultes__timbres1">
-                <div class="consultes__timbres__details">
-                    <p class="consultes__timbres__details__text">
-                        Timbre "Magenta"
-                    </p>
-                    <a href="#" class="consultes__timbres__details__a">
-                        Aller à la fiche
-                    </a>
-                </div>
-            </article>
-            <article class="consultes__timbres2">
-                <div class="consultes__timbres__details">
-                    <p class="consultes__timbres__details__text">
-                        Queen stamp
-                    </p>
-                    <a href="#" class="consultes__timbres__details__a">
-                        Aller à la fiche
-                    </a>
-                </div>
-            </article>
-        </section>
-        <a href="#" class="lien lien1">VOIR TOUT</a>
-    </section> -->
-
-
-        <!-- <h1>Catalogue des timbres</h1> -->
+        Il y a {{enchereTrouvee|length}} {{ (enchereTrouvee|length > 1) ? 'résultats trouvés' : 'résultat trouvé' }}
         <div class="bar">
             <button class="menu__hamburger" id="hamburger">
                 <i class="fa-solid fa-chevron-down"></i>
@@ -39,7 +12,7 @@
                 <span class="bar__filtre__text">filtre</span>
             </div>
             <form action="enchere/recherche" method="post" class="bar__recherche">
-                <input type="text" name="recherche" class="bar__recherche__champ" placeholder="Rechercher...">
+                <input type="text" name="recherche" class="bar__recherche__champ" placeholder="Rechercher une enchère">
                 <input type="submit" value="Trouver" class="bar__recherche__btn">
             </form>
             <div class="bar__icones">
@@ -101,6 +74,7 @@
             </aside>
 
             <section class="catalogue1__principal">
+                {% if enchereTrouvee %}
                 {% for enche in enchereTrouvee %}
                 <article class="catalogue1__principal__timbre">
                     <img class="catalogue1__principal__timbre__img" src="ressources/css/accueil/immg/{{enche.img_path}}" alt="{{enche.img_path}}">
@@ -111,7 +85,9 @@
                     <a href="enchere/detail/{{enche.enc_id}}" class="lienTimbre">voir la fiche</a>
                 </article>
                 {% endfor %}
-                
+                {% else %}
+                    <h1>Aucun résultat trouvé</h1>
+                {% endif %}
             </section>
         </section>
         <a href="#" class="liTbr">VOIR TOUT</a>
