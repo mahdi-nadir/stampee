@@ -115,8 +115,9 @@ class EnchereControleur extends Controleur
      */
     public function recherche() 
     {
-        $mot = $_POST['recherche'];
-        if(!empty($mot)) {
+        
+        if(!empty($_POST['recherche'])) {
+            $mot = $_POST['recherche'];
             $this->gabarit->affecter('enchereTrouvee', $this->modele->rechercher($mot));
         }
     }

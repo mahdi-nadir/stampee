@@ -13,7 +13,7 @@
                 <section>
                     {%if mises%}
                     {% for mise in mises %}
-                        <li class="secListe">La mise #{{mise.mis_id}}, déposée par -{{mise.uti_nom}}- le {{mise.mis_date}}, contient un montant de {{mise.mis_montant}}</li>
+                        <li class="secListe">La mise #{{mise.mis_id}}, déposée par -{{mise.uti_nom}}- le {{mise.mis_date}}, contient un montant de {{mise.mis_montant}}</li><br><br>
                     {% endfor%}
                     {%else%}
                     <h1>Aucune donnée disponible!</h1>

@@ -343,6 +343,10 @@ public function msgUser($sender, $receiver, $suj, $msg)
     }
 
 public function getMessage($utiId) {
-    return $this->lireTout("SELECT * FROM `message` WHERE msg_receiver = $utiId GROUP BY msg_id");
+    return $this->lireTout("SELECT * FROM `message`
+                            JOIN utilisateur
+                            ON msg_sender = uti_id
+                            WHERE msg_receiver = $utiId 
+                            GROUP BY msg_id");
 }
 }

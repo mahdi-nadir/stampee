@@ -241,7 +241,7 @@
         } else if (valeur < valeur2) { 
             messageErr = 'La date de fin ne doit pas être avant celle de début!';
             error = true;
-        } else if (valeur == valeur2) { 
+        } else if (valeur == valeur2 || valeur > valeur2) { 
             messageErr = 'Veuillez mettre une date à partir du lendemain!';
             error = true;
         }

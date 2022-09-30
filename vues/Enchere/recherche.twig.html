@@ -3,7 +3,7 @@
 {% block main %}
 
 <h1>Résultats trouvés</h1>
-        Il y a {{enchereTrouvee|length}} {{ (enchereTrouvee|length > 1) ? 'résultats trouvés' : 'résultat trouvé' }}
+        <p id="resultRecherche">Il y a {{enchereTrouvee|length}} {{ (enchereTrouvee|length > 1) ? 'résultats trouvés' : 'résultat trouvé' }}</p>
         <div class="bar">
             <button class="menu__hamburger" id="hamburger">
                 <i class="fa-solid fa-chevron-down"></i>

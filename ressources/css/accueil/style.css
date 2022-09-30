@@ -767,6 +767,24 @@ h2 {
     font-size: clamp(10pt, 14pt, 18pt);
 }
 
+#resultRecherche {
+    text-align: center;
+    margin: auto;
+    color: red;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* MEDIA QUERIES *******************************/
 @media screen and (max-width: 1290px) {
     main {

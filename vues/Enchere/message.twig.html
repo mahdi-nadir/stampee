@@ -8,9 +8,9 @@
                 <section>
                     {%if messages%}
                     {% for message in messages %}
-                        <li class="secListe">Message de {{message.msg_sender}}, reçu le {{message.msg_date}}:</li>
+                        <li class="secListe">Message de {{message.uti_nom}}, reçu le {{message.msg_date}}:</li>
                         <details>{{message.msg_contneu}}</details>
-
+<br><br><br>
                     {% endfor%}
                     {%else%}
                     <h1>Aucun message disponible!</h1>
