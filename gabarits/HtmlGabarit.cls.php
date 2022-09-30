@@ -26,7 +26,7 @@ class HtmlGabarit
     public function affecterActionParDefaut($nomAction) {
         $this->action = $nomAction;
     }
- 
+
     public function genererVue() 
     {
         // extract($this->variables);  // Voir la documentation 

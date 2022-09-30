@@ -44,20 +44,21 @@ class UtilisateurControleur extends Controleur
         $utilisateur = $this->modele->un($courriel);
         
 
-        /* $erreur = false;
+        $erreur = false;
         if(!$utilisateur || !password_verify($mdp, $utilisateur->uti_mdp)) {
             $erreur = "Combinaison courriel/mot de passe erronée";
-        } */
-
-        if($utilisateur) {
+            Utilitaire::nouvelleRoute('utilisateur/nouveau');
+        } 
+        
+        if (!$erreur) {
             $_SESSION['utilisateur'] = $utilisateur;
             Utilitaire::nouvelleRoute('accueil/index');
         }
-        /* else {
+        else {
             $this->gabarit->affecter('erreur', $erreur);
             $this->gabarit->affecterActionParDefaut('index');
             $this->index([]);
-        } */
+        }
     }
 
     public function deconnexion()

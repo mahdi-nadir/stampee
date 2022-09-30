@@ -54,8 +54,8 @@ INSERT INTO `role` (`rol_id`, `rol_statut`) VALUES
 CREATE TABLE `utilisateur` (
   `uti_id` int(6) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `uti_nom` varchar(25) NOT NULL,
-  `uti_courriel` varchar(75) UNIQUE NOT NULL,
-  `uti_mdp` varchar(200) NOT NULL,
+  `uti_courriel` varchar(100) UNIQUE NOT NULL,
+  `uti_mdp` varchar(300) NOT NULL,
   `uti_pays` varchar(25),
   `uti_rol_id_ce` int(6) NOT NULL DEFAULT '2',
   FOREIGN KEY (`uti_rol_id_ce`) REFERENCES `role` (`rol_id`)

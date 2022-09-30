@@ -1,7 +1,6 @@
 <?php
 class EnchereControleur extends Controleur
 {
-
     public function __construct($modele, $module, $action)
     {
         parent::__construct($modele, $module, $action);
@@ -103,8 +102,11 @@ class EnchereControleur extends Controleur
         $this->gabarit->affecter('enchere', $this->modele->un($_POST['enc_id']));
     }
 
-
-
+    /* public function rechercher()
+    {
+        $this->gabarit->affecter('enchereTrouvee', $this->modele->rechercher($_POST));
+        
+    } */
 
 
     /*
@@ -112,8 +114,6 @@ class EnchereControleur extends Controleur
     * ************************************  actions  **************************************
     * ****************************************************************************************
     */
-
-
 
 
 
@@ -201,5 +201,13 @@ class EnchereControleur extends Controleur
     public function delFavori() {
         $this->modele->delFavori($_POST['enc_id'], $_SESSION['utilisateur']->uti_id);
         Utilitaire::nouvelleRoute("enchere/tout");
+    }
+
+    public function recherche() 
+    {
+        if($_POST['recherche'] != "") {
+            $mot = $_POST['recherche'];
+            $this->gabarit->affecter('enchereTrouvee', $this->modele->rechercher($mot));
+        }
     }
 }

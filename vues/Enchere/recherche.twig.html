@@ -2,12 +2,11 @@
 
 {% block main %}
 
-<h1>Les plus consultés</h1>
-        <section class="tous">
+<h1>Résultats trouvés</h1>
+        <!-- <section class="tous">
         <section class="consultes">
             <article class="consultes__timbres1">
                 <div class="consultes__timbres__details">
-                    <!-- <img class="consultes__timbres__details_img" src="ressources/css/accueil/img/consulte1.jpg"> -->
                     <p class="consultes__timbres__details__text">
                         Timbre "Magenta"
                     </p>
@@ -28,10 +27,10 @@
             </article>
         </section>
         <a href="#" class="lien lien1">VOIR TOUT</a>
-    </section>
+    </section> -->
 
 
-        <h1>Catalogue des timbres</h1>
+        <!-- <h1>Catalogue des timbres</h1> -->
         <div class="bar">
             <button class="menu__hamburger" id="hamburger">
                 <i class="fa-solid fa-chevron-down"></i>
@@ -41,7 +40,7 @@
             </div>
             <form action="enchere/recherche" method="post" class="bar__recherche">
                 <input type="text" name="recherche" class="bar__recherche__champ" placeholder="Rechercher...">
-                <input type="submit" name="submitNv" value="Trouver" class="bar__recherche__btn">
+                <input type="submit" value="Trouver" class="bar__recherche__btn">
             </form>
             <div class="bar__icones">
                 <i class="fa-solid fa-grip"></i>
@@ -102,17 +101,16 @@
             </aside>
 
             <section class="catalogue1__principal">
-                {% for enchere in encheres %}
+                {% for enche in enchereTrouvee %}
                 <article class="catalogue1__principal__timbre">
-                    <img class="catalogue1__principal__timbre__img" src="ressources/css/accueil/immg/{{enchere.img_path}}" alt="{{enchere.img_path}}">
-                    <h2 class="catalogue1__principal__timbre__titre">{{enchere.tim_nom}}</h2>
+                    <img class="catalogue1__principal__timbre__img" src="ressources/css/accueil/immg/{{enche.img_path}}" alt="{{enche.img_path}}">
+                    <h2 class="catalogue1__principal__timbre__titre">{{enche.tim_nom}}</h2>
                     <p class="catalogue1__principal__timbre__presentation">
-                        {{enchere.tim_description}}
+                        {{enche.tim_description}}
                     </p>
-                    <a href="enchere/detail/{{enchere.enc_id}}" class="lienTimbre">voir la fiche</a>
+                    <a href="enchere/detail/{{enche.enc_id}}" class="lienTimbre">voir la fiche</a>
                 </article>
                 {% endfor %}
-                
                 
             </section>
         </section>
