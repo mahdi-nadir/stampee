@@ -25,58 +25,35 @@
         <img src="ressources/css/accueil/img/stampee.jpg" alt="Lord Stampee" class="presentation__text__img">
         </section>
         
-        <!-- <h1>Enchères à venir</h1>
-        <section class="catalogue__principal">
-        <article class="catalogue__principal__timbre">
-            <div class="catalogue__principal__timbre__infos">
-            <span class="catalogue__principal__timbre__infos__titre">Parlement du Canada</span><br>
-            <span class="catalogue__principal__timbre__infos__date">29 août 2022</span><br>
-            <span class="catalogue__principal__timbre__infos__prix"><b>Prix estimé:</b> 3000 £</span><br>
-            <div class="catalogue__principal__timbre__infos__btns">
-                <a class="catalogue__principal__timbre__infos__btns__btn ">faire une mise</a>
-                <a class="catalogue__principal__timbre__infos__btns__btn ">Voir détails</a>
-            </div>
-            </div>
-            <div class="catalogue__principal__timbre__imgs">
-            <img class="catalogue__principal__timbre__img" src="ressources/css/accueil/img/parliament.jpg" alt="Parlement" title="Parlement du Canada">
-            <img class="catalogue__principal__timbre__img" src="ressources/css/accueil/img/parliament-back.jpg" alt="Parlement Verso" title="Parlement du Canada (back)">
-            </div>
-        </article>
 
-        <article class="catalogue__principal__timbre">
-            <div class="catalogue__principal__timbre__infos">
-            <span class="catalogue__principal__timbre__infos__titre">Queen Elizabeth</span><br>
-            <span class="catalogue__principal__timbre__infos__date">24 mars 2023</span><br>
-            <span class="catalogue__principal__timbre__infos__prix"><b>Prix estimé:</b> 4000 £</span><br>
-            <div class="catalogue__principal__timbre__infos__btns">
-                <a class="catalogue__principal__timbre__infos__btns__btn ">faire une mise</a>
-                <a class="catalogue__principal__timbre__infos__btns__btn ">Voir détails</a>
-            </div>
-            </div>
-            <div class="catalogue__principal__timbre__imgs">
-            <img class="catalogue__principal__timbre__img" src="ressources/css/accueil/img/stampCat1.jpg" alt="Queen Elizabeth" title="Reine Elizabeth">
-            <img class="catalogue__principal__timbre__img" src="ressources/css/accueil/img/s-300.jpg" alt="Queen Elizabeth Verso" title="Reine Elizabeth (back)">
-            </div>
-        </article>
+        <h1>Enchères à venir</h1>
 
-        <article class="catalogue__principal__timbre">
-            <div class="catalogue__principal__timbre__infos">
-            <span class="catalogue__principal__timbre__infos__titre">Polish Kitten</span><br>
-            <span class="catalogue__principal__timbre__infos__date">19 août 2022</span><br>
-            <span class="catalogue__principal__timbre__infos__prix"><b>Prix estimé:</b> 1500 £</span><br>
-            <div class="catalogue__principal__timbre__infos__btns">
-                <a class="catalogue__principal__timbre__infos__btns__btn ">faire une mise</a>
-                <a class="catalogue__principal__timbre__infos__btns__btn ">Voir détails</a>
-            </div>
-            </div>
-            <div class="catalogue__principal__timbre__imgs">
-            <img class="catalogue__principal__timbre__img" src="ressources/css/accueil/img/cat.jpg" alt="Polish Kitten" title="Polish Kitten">
-            <img class="catalogue__principal__timbre__img" src="ressources/css/accueil/img/catback.jpg" alt="Polish Kitten" title="Polish Kitten (back)">
-            </div>
-        </article>
-        </section>
-        <a href="#" class="liTbr">VOIR TOUT</a>
- -->
+            {% if encheres %}
+            {% for enchere in encheres %}
+            <section class="catalogue__principal">
+                <article class="catalogue__principal__timbre">
+                    <div class="catalogue__principal__timbre__infos">
+                    <span class="catalogue__principal__timbre__infos__titre">{{enchere.tim_nom}}</span><br>
+                    <span class="catalogue__principal__timbre__infos__date"><b>Année:</b> {{enchere.tim_dateCreation}}</span><br>
+                    <span class="catalogue__principal__timbre__infos__prix"><b>Prix actuel:</b> {{enchere.enc_prixActuel}} £</span><br>
+                    <div class="catalogue__principal__timbre__infos__btns">
+                        <a class="catalogue__principal__timbre__infos__btns__btn">faire une mise</a>
+                        <a class="catalogue__principal__timbre__infos__btns__btn">Voir détails</a>
+                    </div>
+                    </div>
+                    <div class="catalogue__principal__timbre__imgs">
+                    <img class="catalogue__principal__timbre__img" src="ressources/css/accueil/immg/{{enchere.img_path}}">
+                    </div>
+                </article>
+            </section>
+            <a href="enchere/tout" class="liTbr">VOIR TOUT</a> <br><br><br>
+            {% endfor %}
+            {% else %}
+                <h2>Aucune enchère n'est disponible!</h2> <br><br><br>
+            {% endif %}
+
+
+        
 
         <h1>NEWSLETTER</h1>
         <section class="newsletter">
