@@ -31,7 +31,7 @@ class UtilisateurModele extends AccesBd
     public function contacter($suj, $msg, $utilisateur)
     {
         $this->creer("  INSERT INTO `message` 
-                        VALUES (0, :msg_sujet, :msg_contenu, $utilisateur)", 
+                        VALUES (0, :msg_sujet, :msg_contenu, NOW(), $utilisateur, 1)", 
                             [
                                 "msg_sujet"     => $suj, 
                                 "msg_contenu"     => $msg

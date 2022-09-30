@@ -96,19 +96,39 @@ class EnchereControleur extends Controleur
         $this->gabarit->affecter('favoris', $this->modele->getAllFavoris($_SESSION['utilisateur']->uti_id));
     }
 
+        
+    /**
+     * listemises: affiche la liste de toutes les mises d'une enchère
+     *
+     * @return void
+     */
     public function listemises()
     {
         $this->gabarit->affecter('mises', $this->modele->mise($_POST['enc_id']));
         $this->gabarit->affecter('enchere', $this->modele->un($_POST['enc_id']));
     }
 
-    /* public function rechercher()
+    /**
+     * recherche: recherche et affiche les enchères
+     *
+     * @return void
+     */
+    public function recherche() 
     {
-        $this->gabarit->affecter('enchereTrouvee', $this->modele->rechercher($_POST));
-        
-    } */
+        $mot = $_POST['recherche'];
+        if(!empty($mot)) {
+            $this->gabarit->affecter('enchereTrouvee', $this->modele->rechercher($mot));
+        }
+    }
 
+    public function contactuser() {
+        $this->gabarit->affecter('userReceiver', $this->modele->un($_POST['enc_id']));
+        $this->gabarit->affecter('userSender', $this->modele->userSender($_SESSION['utilisateur']->uti_id));
+    }
 
+    public function message() {
+        $this->gabarit->affecter('messages', $this->modele->getMessage($_SESSION['utilisateur']->uti_id));
+    }
     /*
     * ****************************************************************************************
     * ************************************  actions  **************************************
@@ -203,11 +223,9 @@ class EnchereControleur extends Controleur
         Utilitaire::nouvelleRoute("enchere/tout");
     }
 
-    public function recherche() 
-    {
-        if($_POST['recherche'] != "") {
-            $mot = $_POST['recherche'];
-            $this->gabarit->affecter('enchereTrouvee', $this->modele->rechercher($mot));
-        }
+
+    public function msgUser() {
+        $this->modele->msgUser($_SESSION['utilisateur']->uti_id, $_POST['receiver'], $_POST['msg_sujet'], $_POST['msg_contenu']);
+        Utilitaire::nouvelleRoute("accueil/index");
     }
 }

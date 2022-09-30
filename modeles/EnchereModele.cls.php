@@ -19,8 +19,6 @@ class EnchereModele extends AccesBd
     {
         return $this->lireTout('SELECT * 
                                 FROM enchere
-                                /* JOIN mise
-                                ON enc_id = mis_enc_id_ce */
                                 JOIN timbre 
                                 ON enc_id = tim_enc_id_ce
                                 JOIN `image`
@@ -41,8 +39,6 @@ class EnchereModele extends AccesBd
                                 FROM enchere
                                 JOIN utilisateur
                                 ON enc_uti_id_ce = uti_id
-                                /* JOIN mise
-                                ON enc_id = mis_enc_id_ce */
                                 JOIN timbre 
                                 ON enc_id = tim_enc_id_ce
                                 JOIN `image`
@@ -90,13 +86,6 @@ class EnchereModele extends AccesBd
             [
                 'img_path' => $name
             ]);
-            
-            
-            /* $this->creer("INSERT INTO mise
-            VALUES (0, :enc_prixDepart+1, $encId, $utiId);", 
-            [
-                'enc_prixDepart' => $enc_prixDepart
-            ]); */
     }
 
     
@@ -323,49 +312,37 @@ public function rechercher($word) {
     ]);
 }
 
-/* public function premiereImage($id) {
-    $sql = "SELECT img_path FROM image 
-                    WHERE img_tim_id_ce = $id";
-            $imagesArray =  $this->lireTout($sql, false);
-    return $imagesArray[0]->img_path;
-}
 
-public function miseMax($id) {
-    $sql = "SELECT mis_id, MAX(mis_montant) as mis_montant_max, mis_date, uti_nom FROM mise 
-                JOIN utilisateur ON uti_id=mis_uti_id_ce
-                WHERE mis_enc_id_ce = $id";
-    return $this->lireTout($sql);
-}
 
-public function rechercher($expression)
+
+
+/**
+* **********************************************************************
+* ***** MESSAGE *****
+* **********************************************************************
+*/
+
+public function userSender($utiId)
     {
-        $sql = "SELECT * FROM timbre  
-                JOIN enchere ON tim_id=enc_tim_id_ce
-                WHERE tim_nom LIKE :tim_nom OR tim_id LIKE :tim_id  
-                ORDER BY tim_id";
-         $result = $this->lireTout($sql
-                                , true, // on veut les données groupées par timbre
-                                [
-                                "tim_nom"          => $expression,
-                                "tim_id"      => $expression
-                            ]);
-
-        foreach ($result as $timbres) {
-            foreach($timbres as $timbre) {
-                // Recherche de la première image pour chaque timbre
-                $timbre->ima_path = $this->premiereImage($timbre->enc_tim_id_ce);
-                // Recherche de mise pour chaque enchère associée à chaque timbre
-                $misesArray = $this->miseMax($timbre->enc_id);
-                foreach ($misesArray as $mises) {
-                    foreach ($mises as $mise) {
-                        $timbre->mis_montant =  $mise->mis_montant_max;
-                        $timbre->mis_date =  $mise->mis_date;
-                    }
-                }
-            }
-        }
-        return $result;
+        return $this->lireUn("SELECT * FROM utilisateur 
+                                WHERE uti_id=:id"
+                            , ['id'=>$utiId]);
     }
- */
 
+public function msgUser($sender, $receiver, $suj, $msg)
+    {
+        /* $re = $this->lireUn("SELECT * FROM utilisateur 
+        WHERE uti_rol_id_ce = $receiver"); */
+
+        $this->creer("  INSERT INTO `message` 
+                        VALUES (0, :msg_sujet, :msg_contenu, NOW(), $sender, $receiver)", 
+                            [
+                                "msg_sujet"     => $suj, 
+                                "msg_contenu"     => $msg
+                            ]);
+    }
+
+public function getMessage($utiId) {
+    return $this->lireTout("SELECT * FROM `message` WHERE msg_receiver = $utiId GROUP BY msg_id");
+}
 }

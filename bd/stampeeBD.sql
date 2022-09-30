@@ -69,9 +69,12 @@ CREATE TABLE `utilisateur` (
 CREATE TABLE `message` (
   `msg_id` int(6) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `msg_sujet` varchar(100) NOT NULL,
-  `msg_contneu` TEXT(1500) NOT NULL,
-  `msg_uti_id_ce` int(6) NOT NULL,
-  FOREIGN KEY (`msg_uti_id_ce`) REFERENCES `utilisateur` (`uti_id`)
+  `msg_contneu` TEXT(1000) NOT NULL,
+  `msg_date` DATE NOT NULL,
+  `msg_sender` int(6) NOT NULL,
+  `msg_receiver` int(6) NOT NULL,
+  FOREIGN KEY (`msg_sender`) REFERENCES `utilisateur` (`uti_id`),
+  FOREIGN KEY (`msg_receiver`) REFERENCES `utilisateur` (`uti_id`)
 ) ;
 
 -- --------------------------------------------------------
