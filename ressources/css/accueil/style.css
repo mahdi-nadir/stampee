@@ -32,6 +32,7 @@ body {
     align-items: center;
     list-style: none;
     z-index: 1;
+    width: 270px;
 }
 
 .menu__list li:first-child:hover #ulPro {
