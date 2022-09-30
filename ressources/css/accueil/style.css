@@ -220,8 +220,8 @@ hr {
     
 }
 
-.catalogue__principal__timbre__imgs img {
-    max-width: 50%;
+.catalogue__principal__timbre__img {
+    min-width: 60%;
     object-fit: cover;
     cursor: pointer;
     border-radius: 5px;
@@ -773,7 +773,11 @@ h2 {
     color: red;
 }
 
-
+.lienNormal {
+    display: inline-block;
+    text-align: center;
+    margin: auto;
+}
 
 
 
@@ -1010,8 +1014,10 @@ h2 {
 .lien, #appliquer{
     border: white 2px solid;
     border-radius: 5px;
+    margin: auto;
     padding: 5px 15px;
     margin-top: 30px;
+    width: fit-content;
     color: white;
     text-decoration: none;
     font-family: 'Kdam Thmor Pro', sans-serif;

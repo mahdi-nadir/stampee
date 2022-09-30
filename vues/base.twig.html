@@ -20,7 +20,7 @@
             <i class="fa-solid fa-bars" title="Menu Principal"></i>
         </button>
         <ul class="menu__list" id="menuUL">
-            <li><a href="#">{{session.utilisateur.uti_nom}} -- Profil {% if session.utilisateur %}↓{% endif %}</a>
+            <li><a href="#"><!-- {{session.utilisateur.uti_nom}} --  -->Profil {% if session.utilisateur %}↓{% endif %}</a>
                 {% if session.utilisateur %}
             <ul id="ulPro">
                 <li><a href="#">Mon profil</a></li>
